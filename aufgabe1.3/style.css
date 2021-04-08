@@ -1,0 +1,115 @@
+body{
+    background-image: url("Medien/bg.png");
+    text-align: center;
+}
+main{
+    max-width: 800px;
+    margin: auto;
+}
+header{
+    text-align: center;
+}
+a{
+    font-family: Arial, Helvetica, sans-serif;
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+ol{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: auto;
+}
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+h3{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+video{
+    text-align: center;
+}
+#media{
+    margin: auto;
+    vertical-align: middle;
+}
+#Referenzbilder{
+    max-width: 800px;
+}
+#portrait{
+    max-width: 250px;
+}
+#banner{
+    max-width: 600px;
+    text-align: center;
+}
+nav a:hover{
+    color: burlywood;
+}
+nav{
+    margin-right: -50%;   
+    margin-top: 1%;
+}
+.instagram:hover{
+    background-color: bisque;
+}
+.kontaktformular{
+    text-align: center;
+    border: none;
+}
+input{
+    padding-bottom: 3%;
+    width: 50%;
+    font-size: 1em;
+    text-align: center;
+    color: white;
+    background-color: rgb(194, 194, 194);
+    border: none;
+}
+#nachrichtenfenster{
+    padding-bottom: 20%;
+    width: 80%;
+}
+button{
+    color: white;
+    background-color: rgb(194, 194, 194);
+    border: none;
+    padding: 0.75%;
+}
+button:hover{
+    background-color: rgb(48, 48, 48);
+}
+.liste{
+    text-align: left;
+    margin-left: 35%;
+}
+#seitenanfang{
+    font-size: 4.5em;
+    color: bisque;
+    background-color: black;
+    margin-left: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    max-width: 800px;
+}
+nav a{
+    color:white;
+    background-color: black;
+    padding: 0.15%;
+}
+#aktuelle_index{
+    color: bisque;
+}
+#aktuelle_uebermich{
+    color: bisque;
+}
+#aktuelle_kontakt{
+    color: bisque;
+}
