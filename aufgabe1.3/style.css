@@ -57,9 +57,6 @@ nav{
     margin-right: -50%;   
     margin-top: 1%;
 }
-.instagram:hover{
-    background-color: bisque;
-}
 .kontaktformular{
     text-align: center;
     border: none;
@@ -99,10 +96,24 @@ button:hover{
     margin-bottom: 5%;
     max-width: 800px;
 }
-nav a{
+.navigation{
     color:white;
     background-color: black;
     padding: 0.15%;
+    text-decoration: none;
+}
+#navigation{
+    z-index: 1;
+}
+#instagram{
+    z-index: 2;
+    margin-left: 57%;
+    margin-top: -1.2%;
+    width: 1.5%;
+}
+#instagram:hover{
+    /*background-color: bisque;*/
+    width: 2.5%;
 }
 #aktuelle_index{
     color: bisque;
