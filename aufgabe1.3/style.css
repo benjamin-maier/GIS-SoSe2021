@@ -1,13 +1,17 @@
 body{
     background-image: url("Medien/bg.png");
     text-align: center;
-}
-main{
     max-width: 800px;
     margin: auto;
 }
+main{
+    margin: auto;
+    max-width: 800px;
+    margin-top: 12%;
+}
 header{
     text-align: center;
+    max-width: 800px;
 }
 a{
     font-family: Arial, Helvetica, sans-serif;
@@ -33,29 +37,14 @@ h3{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
-video{
-    text-align: center;
-}
-#media{
-    margin: auto;
-    vertical-align: middle;
-}
 #Referenzbilder{
     max-width: 800px;
 }
 #portrait{
     max-width: 250px;
 }
-#banner{
-    max-width: 600px;
-    text-align: center;
-}
 nav a:hover{
     color: burlywood;
-}
-nav{
-    margin-right: -50%;   
-    margin-top: 1%;
 }
 .kontaktformular{
     text-align: center;
@@ -63,7 +52,6 @@ nav{
 }
 input{
     padding-bottom: 3%;
-    width: 50%;
     font-size: 1em;
     text-align: center;
     color: white;
@@ -91,29 +79,29 @@ button:hover{
     font-size: 4.5em;
     color: bisque;
     background-color: black;
-    margin-left: auto;
-    margin-top: 5%;
     margin-bottom: 5%;
-    max-width: 800px;
 }
-.navigation{
+#sticky-nav-content{
     color:white;
     background-color: black;
-    padding: 0.15%;
     text-decoration: none;
+    position: fixed;
+    padding: 10px;
+    top: 0;
+    margin-left: 37.7%;
 }
-#navigation{
-    z-index: 1;
+.sticky-nav{
+    position: sticky;
+    max-width: 800px;
 }
 #instagram{
-    z-index: 2;
-    margin-left: 57%;
-    margin-top: -1.2%;
-    width: 1.5%;
+    width: 5%;
+    margin-left: 60%;
+    margin-top: 0.5%;
 }
 #instagram:hover{
     /*background-color: bisque;*/
-    width: 2.5%;
+    scale: +1.2;
 }
 #aktuelle_index{
     color: bisque;
