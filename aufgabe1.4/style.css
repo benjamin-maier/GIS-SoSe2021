@@ -149,12 +149,12 @@ button:hover{
 }
 #sticky-nav-content{
     color: white;
-    background-color: rgb(48,48,48);
+    background-color: black;
     text-decoration: none;
     position: fixed;
     padding: 15px;
     top: 0;
-    margin-left: 37.7%;
+    margin-left: 36%;
 }
 .sticky-nav{
     position: sticky;
@@ -170,7 +170,7 @@ nav a:hover{
 }
 #instagram{
     width: 5%;
-    margin-left: 60%;
+    margin-left: 58%;
     margin-top: 0.5%;
 }
 #instagram:hover{
@@ -200,4 +200,97 @@ a [href = "#seitenanfang"]{
 }
 #aktuelle_kontakt{
     color: bisque;
+}
+/*Tablet*/@media screen and (max-width: 1024px) {
+    #sticky-nav-content{
+        color: white;
+        background-color: black;
+        text-decoration: none;
+        position: fixed;
+        padding: 15px;
+        top: 0;
+        margin-left: 25%;
+    }
+    .sticky-nav{
+        position: sticky;
+        width: 100%;
+    }
+    nav a{
+        color:white;
+        text-decoration: none;
+        font-size: 1.5em;
+    }
+    nav a:hover{
+        color: rgb(153, 77, 0);
+    }
+    #instagram{
+        display: none;
+    }
+}
+/*Smartphone*/@media screen and (max-width: 600px) {
+    #sticky-nav-content{
+        color: white;
+        background-color: black;
+        text-decoration: none;
+        position: fixed;
+        padding: 15px;
+        top: 0;
+        margin-left: 0.5%;
+        margin-bottom: 5%;
+    }
+    .sticky-nav{
+        position: sticky;
+        width: 100%;
+    }
+    nav a{
+        color:white;
+        text-decoration: none;
+        font-size: 1.4em;
+    }
+    nav a:hover{
+        color: rgb(153, 77, 0);
+    }
+    #instagram{
+        display: none;
+    }
+    #seitenanfang{
+        font-size: 3em;
+        text-align: center;
+        color: bisque;
+        background-color: rgb(80,80,80);
+        margin-bottom: 5%;
+        margin-top: 20%;
+        opacity: 100%;
+        text-decoration: none;
+        animation-duration: 3s;
+        animation-name: comeup;
+        width: 100%;
+    }
+    @keyframes comeup{
+        from{
+            opacity: 0%;
+            margin-bottom: 1%;
+            font-size: 2em;
+            width: 70%;
+        }
+        to{
+            opacity: 100%;
+            margin-bottom: 5%;
+            font-size: 3em;
+            width: 100%;
+        }
+    }
+    #video1{
+        width: 100%;
+    }
+    #seitenanfang2{
+        margin-top: 20%;
+    }
+    #seitenanfang3{
+        margin-top: 20%;
+    }
+    .liste{
+        text-align: center;
+        margin: auto;
+    }
 }
