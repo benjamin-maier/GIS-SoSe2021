@@ -1,6 +1,8 @@
 "use strict";
 var Aufgabe2_2;
 (function (Aufgabe2_2) {
+    //rectangleArray[Math.random() * rectangleArray.length].drawRect(Rectangle);
+    //this.rectangleArray[Math.floor(Math.random() * this.rectangleArray.length)].drawRect();
     console.log("----------");
     console.log("AUFGABE 1a:");
     function min(numberArray1) {
@@ -185,35 +187,32 @@ var Aufgabe2_2;
     let canvas2 = document.getElementById("myCanvas2");
     let context2 = canvas2.getContext("2d");
     context2.lineWidth = 10;
-    console.log("----------");
-    console.log("AUFGABE 3c:");
-    function createRec() {
-        let rectangle1 = new Path2D();
-        rectangle1.closePath();
-        context2.fillStyle = "#00000";
-        context2.fillRect((Math.floor(Math.random() * 400)), (Math.floor(Math.random() * 400)), (Math.floor(Math.random() * 400)), (Math.floor(Math.random() * 400)));
-    }
-    createRec();
-    console.log("----------");
-    console.log("AUFGABE 3d:");
-    function drawRec(a, b, c, d) {
-        let rectangle1 = new Path2D();
-        rectangle1.closePath();
-        context2.fillStyle = "#00000";
-        context2.fillRect(a, b, c, d);
-    }
-    drawRec(50, 40, 50, 40);
-    console.log("----------");
-    console.log("AUFGABE 3e:");
     class Rectangle {
-        constructor(side1, side2, side3, side4) {
-            this.side1 = side1;
-            this.side2 = side2;
-            this.side3 = side3;
-            this.side4 = side4;
+        constructor() {
+            this.createRect();
+        }
+        //--------------------
+        // AUFGABE 3c
+        createRect() {
+            let rectangle1 = new Path2D();
+            rectangle1.closePath();
+            context2.fillStyle = "#00000";
+            context2.fillRect((Math.floor(Math.random() * 400)), (Math.floor(Math.random() * 400)), (Math.floor(Math.random() * 400)), (Math.floor(Math.random() * 400)));
+        }
+        //--------------------
+        // AUFGABE 3d
+        drawRect() {
+            let rectangle2 = new Path2D();
+            rectangle2.closePath();
+            context2.fillStyle = "#00000";
+            context2.fillRect(this.side1, this.side2, this.side3, this.side4);
         }
     }
-    let rectangelArray = [new Rectangle(12, 24, 18, 5), new Rectangle(18, 12, 40, 17), new Rectangle(2, 35, 17, 32)];
-    rectangelArray.drawRect();
+    //--------------------
+    // AUFGABE 3e
+    let rectangleArray = [new Rectangle(), new Rectangle(), new Rectangle()];
+    for (let i = 0; i < rectangleArray.length; i++) {
+        rectangleArray[(Math.random() * rectangleArray.length)].drawRect();
+    }
 })(Aufgabe2_2 || (Aufgabe2_2 = {}));
 //# sourceMappingURL=script.js.map
