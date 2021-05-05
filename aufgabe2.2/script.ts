@@ -6,16 +6,17 @@ namespace Aufgabe2_2 {
     console.log("----------");
     console.log("AUFGABE 1a:");
 
-    function min(numberArray1: number[]): void {
-        let minimum: number = numberArray1[0];
+    function min(...numberArray1: number[]): number {
+        let minimum: number = Infinity;
         for (let i = 0; i < numberArray1.length; i++) {
-            if (numberArray1[i] < minimum) {
-                numberArray1[i] = minimum;
+            if (minimum > numberArray1[i]) {
+                minimum = numberArray1[i];
             }
         }
         console.log("Kleinste Zahl ist: " + minimum);
+        return minimum;
     }
-    min([1, 6, 3, 8, 12]);
+    min(8, 2, 6, 3, 8, 1, 12);
     // Das Array wird durchlaufen und es wird überprüft, ob nachfolgende Stellen kleiner sind als die erste. Am Ende wird das minimum ausgegeben
 
     console.log("----------");
@@ -73,7 +74,7 @@ namespace Aufgabe2_2 {
     studentenArray.push(student1);
     studentenArray.push(student2);
     studentenArray.push(student3);
-    studentenArray.push({ name: "Baier", vorname: "Nico", alter: 21, matrikelnummer: 238952 });
+    studentenArray.push(new Student( "Baier", "Nico", 21, 238952));
 
     console.log(student1.name);
     console.log(student2.alter);
@@ -85,9 +86,10 @@ namespace Aufgabe2_2 {
         console.log(Student.matrikelnummer);
     }
 
-    showInfo(student1);
-    showInfo(student2);
-    showInfo(student3);
+    for (let i = 0; i < studentenArray.length; i++) {
+        console.log("Student Nr." + (i + 1));
+        showInfo(studentenArray[i]);
+    }
 
     console.log("----------");
     console.log("AUFGABE 2a:");
@@ -110,10 +112,14 @@ namespace Aufgabe2_2 {
     console.log("AUFGABE 2b:");
 
     function join(array1: number[], array2: number[]): number[] {
-        for (let i: number = 0; i < array2.length; i++) {
-            array1.push(array2[i]);
+        let joinedArray: number [] = [];
+        for (let i: number = 0; i < array1.length; i++) {
+            joinedArray.push(array1[i]);
         }
-        return array1;
+        for (let i: number = 0; i < array2.length; i++) {
+            joinedArray.push(array2[i]);
+        }
+        return joinedArray;
     }
     console.log(join([3, 5, 9, 8], [2, 17, 12, 7]));
     // array2 wird durchlaufen und fügt dem array 1 mit .push seine Werte hinten an. Dieses wird dann ausgegeben
@@ -122,15 +128,24 @@ namespace Aufgabe2_2 {
     console.log("----------");
     console.log("AUFGABE 2c:");
 
-    function split(numberArray3: number[], i1: number, i2: number): void {
+    function splitArray(numberArray3: number[], i1: number, i2: number): number [] {
+        let splittedArray: number [] = [];
         if (i1 <= numberArray3.length && i2 <= numberArray3.length) {
-            console.log(numberArray3.slice(i1, i2));
+            for(let i: number = i1; i <= i2; i++){
+                splittedArray.push(numberArray3[i]);
+            }
         }
-        else if (i1 > numberArray3.length || i2 > numberArray3.length || i1 < 0 || i2 < 0) {
+        if(i1 > i2){
+            let temp: number = i1;
+            i1 = i2;
+            i2 = temp;
+        }
+        if (i1 > numberArray3.length || i2 > numberArray3.length || i1 < 0 || i2 < 0) {
             console.log("Tut mir leid, diese Indizes scheint es nicht zu geben! :(");
         }
+        return splittedArray;
     }
-    split([3, 7, 2, 9, 18, 27, 5, 12], 2, 5);
+    splitArray([3, 7, 2, 9, 18, 27, 5, 12], 2, 5);
     // Das Array wird durchlaufen und mit .slice und den beiden Indizes wird das Array geteilt und ausgegeben
     // Überprüft werden sollte bei den Indizes, ob diese zu hoch sind (nicht mehr vorhanden) oder kleiner 0 sind (ebenfalls nicht vorhanden). In diesem Fall kann keine Ausgabe erfolegn und die Funktion springt in das else
 
@@ -234,43 +249,42 @@ namespace Aufgabe2_2 {
     context2.lineWidth = 10;
 
     class Rectangle {
-        side1: number;
-        side2: number;
-        side3: number;
-        side4: number;
+        x_Coordinate: number;
+        y_Coordinate: number;
+        Rect_width: number;
+        Rect_height: number;
 
         constructor() {
-            this.createRect();
+            this.x_Coordinate = this.getRandom(0, 400);
+            this.y_Coordinate = this.getRandom(0, 400);
+            this.Rect_width = this.getRandom(0, 400);
+            this.Rect_height = this.getRandom(0, 400);
         }
 
         //--------------------
         // AUFGABE 3c
 
-        createRect(): void {
-            let rectangle1: Path2D = new Path2D();
-
-            rectangle1.closePath();
-            context2.fillStyle = "#00000";
-            context2.fillRect((Math.floor(Math.random() * 400)), (Math.floor(Math.random() * 400)), (Math.floor(Math.random() * 400)), (Math.floor(Math.random() * 400)));
+        getRandom(minimum_number: number, maxmímum_number: number): number {
+            return Math.floor( Math.random() * (maxmímum_number - minimum_number) + minimum_number );
         }
 
         //--------------------
         // AUFGABE 3d
 
         drawRect(): void {
-            let rectangle2: Path2D = new Path2D();
-
-            rectangle2.closePath();
             context2.fillStyle = "#00000";
-            context2.fillRect(this.side1, this.side2, this.side3, this.side4);
+            context2.fillRect(this.x_Coordinate, this.y_Coordinate, this.Rect_width, this.Rect_height);
         }
     }
     //--------------------
     // AUFGABE 3e
 
-    let rectangleArray: Rectangle[] = [new Rectangle(), new Rectangle(), new Rectangle()]
+    let rectangleArray: Rectangle[] = [];
 
-    for (let i: number = 0; i < rectangleArray.length; i++) {
-        rectangleArray[(Math.random() * rectangleArray.length)].drawRect();
+    for(let i: number = 0; i < 3; i++) {
+        rectangleArray.push(new Rectangle());
+    }
+    for(let rect of rectangleArray){
+        rect.drawRect();
     }
 }

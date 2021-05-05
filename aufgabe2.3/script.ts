@@ -5,10 +5,10 @@ console.log("AUFGABE 1:");
 
 let y: number = 3;
 
-document.addEventListener("click", addRect);
+/*document.addEventListener("click", addRect);
 function addRect(event1: Event): void {
     y = 1;
-    console.log("Button 1 wurde geklickt!");
+    console.log("Button 1 wurde geklickt!");*/
     for (let i = 0; i < y; i++) {
         let div: HTMLDivElement = document.createElement("div");
         div.style.backgroundColor = "black";
@@ -19,7 +19,6 @@ function addRect(event1: Event): void {
         document.body.appendChild(div);
         y+1;
     }
-}
 
 for (let i = 0; i < y; i++) {
     let div: HTMLDivElement = document.createElement("div");
@@ -30,28 +29,4 @@ for (let i = 0; i < y; i++) {
     div.style.width = "500px";
     document.body.appendChild(div);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
