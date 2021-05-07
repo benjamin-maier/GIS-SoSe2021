@@ -60,5 +60,12 @@ for (let i = 0; i < y; i++) {
         previousElement.appendChild(div);
         previousElement = div;
     }
+    let flaschenfarbeArray = [];
+    let flaschenfarbe1 = {
+        farbe: "grün",
+        preis: "0,95€"
+    };
+    flaschenfarbeArray.push(flaschenfarbe1);
+    let flaschenArray = [];
 })(Aufgabe2_3 || (Aufgabe2_3 = {}));
 //# sourceMappingURL=script.js.map

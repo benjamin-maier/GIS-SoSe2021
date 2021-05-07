@@ -68,6 +68,33 @@ let addRecButton: HTMLElement = document.createElement("Button");
         div.classList.add("rectangle");
         previousElement.appendChild(div);
         previousElement = div;
-
     }
+    interface Flasche {
+        flaschenfarbe: string;
+        etikett: string;
+        deckel: string;
+    }
+    interface Details {
+        farbe: string;
+        preis: string;
+    }
+    interface Flaschenfarbe {
+        farbe: string;
+        preis: string;
+    }
+    interface Etikett {
+        farbe: string;
+        preis: string;
+    }
+    interface Deckel {
+        farbe: string;
+        preis: string;
+    }
+    let flaschenfarbeArray: Details [] = []
+    let flaschenfarbe1: Details = {
+        farbe: "grün",
+        preis: "0,95€"
+    }
+    flaschenfarbeArray.push(flaschenfarbe1);
+    let flaschenArray: Flasche [] = [];
 }
