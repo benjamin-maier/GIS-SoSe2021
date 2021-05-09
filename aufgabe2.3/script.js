@@ -1,33 +1,8 @@
 "use strict";
-var Aufgabe2_3;
-(function (Aufgabe2_3) {
+var Aufgabe2_3_1;
+(function (Aufgabe2_3_1) {
     console.log("---------------");
     console.log("AUFGABE 1:");
-    //let y: number = 3;
-    /*document.addEventListener("click", addRect);
-    function addRect(event1: Event): void {
-        y = 1;
-        console.log("Button 1 wurde geklickt!");*/
-    /*for (let i = 0; i < y; i++) {
-        let div: HTMLDivElement = document.createElement("div");
-        div.style.backgroundColor = "black";
-        //let height1: number = Math.random() * 50;
-        div.style.margin = "10px";
-        div.style.height = "50px";
-        div.style.width = "500px";
-        document.body.appendChild(div);
-        y+1;
-    }
-
-for (let i = 0; i < y; i++) {
-    let div: HTMLDivElement = document.createElement("div");
-    div.style.backgroundColor = "black";
-    //let height1: number = Math.random() * 50;
-    div.style.margin = "10px";
-    div.style.height = "50px";
-    div.style.width = "500px";
-    document.body.appendChild(div);
-}*/
     let addRecButton = document.createElement("Button");
     let textRecButton = document.createTextNode("add Rectangle");
     addRecButton.appendChild(textRecButton);
@@ -60,12 +35,5 @@ for (let i = 0; i < y; i++) {
         previousElement.appendChild(div);
         previousElement = div;
     }
-    let flaschenfarbeArray = [];
-    let flaschenfarbe1 = {
-        farbe: "grün",
-        preis: "0,95€"
-    };
-    flaschenfarbeArray.push(flaschenfarbe1);
-    let flaschenArray = [];
-})(Aufgabe2_3 || (Aufgabe2_3 = {}));
+})(Aufgabe2_3_1 || (Aufgabe2_3_1 = {}));
 //# sourceMappingURL=script.js.map
