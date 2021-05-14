@@ -1,6 +1,11 @@
 namespace Aufgabe2_4 {
     
     export interface Unycicle {
+        image: string;
+        price: string;
+    }
+    
+    export interface customUnycicle {
         wheel: Wheel;
         pole: Pole;
         saddle: Saddle;
