@@ -1,11 +1,18 @@
 namespace Aufgabe2_4 {
     
-    export interface Unycicle {
-        image: string;
+    export interface Content {
         price: string;
+        image: string;
+
     }
-    
-    export interface customUnycicle {
+    export interface Unycicle {
+        Wheel: Content[];
+        Pole: Content[];
+        Saddle: Content[];
+
+    }
+
+    /*export interface customUnycicle {
         wheel: Wheel;
         pole: Pole;
         saddle: Saddle;
@@ -28,5 +35,5 @@ namespace Aufgabe2_4 {
         price: string;
 
 
-    }
+    }*/
 }
