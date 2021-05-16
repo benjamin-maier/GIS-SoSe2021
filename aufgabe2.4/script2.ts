@@ -6,12 +6,15 @@ namespace Aufgabe2_4 {
         div.style.maxWidth = "150px";
         let wheelpicture: HTMLImageElement = document.createElement("img");
         wheelpicture.src = _part.image;
-        wheelpicture.style.width = "100%";
+        wheelpicture.style.width = "150px";
+        wheelpicture.style.marginTop = "20px";
+        wheelpicture.style.marginLeft = "630px";
         div.appendChild(wheelpicture);
         let chooseButton: HTMLElement = document.createElement("Button");
         let textChooseButton: Text = document.createTextNode(_part.price);
         chooseButton.appendChild(textChooseButton);
         document.body.appendChild(chooseButton);
+        chooseButton.style.marginLeft = "600px";
         chooseButton.addEventListener("click", safe);
         chooseButton.dataset.safeway = _part.price;
         chooseButton.dataset.safeimg = _part.image;
@@ -72,13 +75,13 @@ namespace Aufgabe2_4 {
     }
     if (document.querySelector("title").getAttribute("id") == "site2") {
         let div: HTMLDivElement = document.createElement("div");
-        div.style.height = "100px";
         document.body.appendChild(div);
      
       
         let wheelpicture: HTMLImageElement = document.createElement("img");
         wheelpicture.src = localStorage.getItem("chosenwheelpicture");
-        wheelpicture.style.marginTop = "50px";
+        wheelpicture.style.marginTop = "40px";
+        wheelpicture.style.marginLeft = "600px";
         wheelpicture.style.width = "200px";
         div.appendChild(wheelpicture);
     }
@@ -90,12 +93,15 @@ namespace Aufgabe2_4 {
         let polepicture: HTMLImageElement = document.createElement("img");
         polepicture.src = localStorage.getItem("chosenpolepicture");
         polepicture.style.height = "300px";
+        polepicture.style.marginTop = "60px";
+        polepicture.style.marginLeft = "600px";
         div.appendChild(polepicture);
 
         let wheelpicture: HTMLImageElement = document.createElement("img");
         wheelpicture.src = localStorage.getItem("chosenwheelpicture");
-        wheelpicture.style.marginTop = "50px";
+        wheelpicture.style.marginTop = "-115px";
         wheelpicture.style.width = "200px";
+        wheelpicture.style.marginLeft = "588px";
         div.appendChild(wheelpicture);
     }
     if (document.querySelector("title").getAttribute("id") == "site4") {
@@ -105,7 +111,7 @@ namespace Aufgabe2_4 {
             chooseButton.appendChild(textChooseButton);
             document.body.appendChild(chooseButton);
             chooseButton.addEventListener("click", restart);
-            chooseButton.style.marginLeft = "600px";
+            chooseButton.style.marginLeft = "650px";
 
         function restart(): void {
             window.location.href = "index.html";
@@ -119,7 +125,7 @@ namespace Aufgabe2_4 {
         saddlepicture.src = localStorage.getItem("chosensaddlepicture");
         saddlepicture.style.width = "90%";
         saddlepicture.style.marginTop = "50px";
-        saddlepicture.style.marginLeft = "550px";
+        saddlepicture.style.marginLeft = "630px";
         div.appendChild(saddlepicture);
 
 
@@ -127,14 +133,14 @@ namespace Aufgabe2_4 {
         polepicture.src = localStorage.getItem("chosenpolepicture");
         polepicture.style.height = "400px";
         polepicture.style.marginTop = "-6.5px";
-        polepicture.style.marginLeft = "612px";
+        polepicture.style.marginLeft = "595px";
         div.appendChild(polepicture);
 
         let wheelpicture: HTMLImageElement = document.createElement("img");
         wheelpicture.src = localStorage.getItem("chosenwheelpicture");
         wheelpicture.style.width = "100%";
         wheelpicture.style.marginTop = "-140px";
-        wheelpicture.style.marginLeft = "510px";
+        wheelpicture.style.marginLeft = "590px";
         div.appendChild(wheelpicture);
     }
 
