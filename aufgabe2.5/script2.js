@@ -1,8 +1,15 @@
 "use strict";
 var Aufgabe2_5;
 (function (Aufgabe2_5) {
-    Aufgabe2_5.myObj = JSON.parse(optionsJSON);
-    let allObjects = JSON.parse(optionsJSON);
+    //export let myObj = JSON.parse(optionsJSON);
+    async function communicate(_url) {
+        let response = await fetch(_url);
+        console.log("Response", response);
+        let answer = await response.json();
+        console.log(answer);
+    }
+    communicate("https://github.com/benjamin-maier/GIS-SoSe2021/blob/main/aufgabe2.5/data.json");
+    let allObjects = response.json();
     function createOptions(_part) {
         let div = document.createElement("div");
         div.style.maxWidth = "150px";

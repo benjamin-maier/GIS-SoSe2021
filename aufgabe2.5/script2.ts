@@ -1,8 +1,17 @@
 namespace Aufgabe2_5 {
 
-    export let myObj = JSON.parse(optionsJSON);
+    //export let myObj = JSON.parse(optionsJSON);
 
-    let allObjects: Unycicle = JSON.parse(optionsJSON);
+    async function communicate(_url: RequestInfo): Promise<void> {
+        let response: Response = await fetch(_url);
+        console.log("Response", response);
+        let answer: Content = await response.json();
+        console.log(answer);
+    }
+    communicate("https://github.com/benjamin-maier/GIS-SoSe2021/blob/main/aufgabe2.5/data.json");
+
+    let allObjects: Unycicle = response.json();
+
     function createOptions(_part: Content): HTMLElement {
         let div: HTMLDivElement = document.createElement("div");
         div.style.maxWidth = "150px";
@@ -21,8 +30,6 @@ namespace Aufgabe2_5 {
         chooseButton.dataset.safeway = _part.price;
         chooseButton.dataset.safeimg = _part.image;
         return div;
-
-
     }
 
     if (document.querySelector("title").getAttribute("id") == "site1") {
@@ -31,7 +38,6 @@ namespace Aufgabe2_5 {
             document.body.appendChild(unycicleelements);
             console.log(unycicleelements);
         }
-
     }
     if (document.querySelector("title").getAttribute("id") == "site2") {
         for (let i: number = 0; i < allObjects.Pole.length; i++) {
@@ -39,7 +45,6 @@ namespace Aufgabe2_5 {
             document.body.appendChild(unycicleelements);
             console.log(unycicleelements);
         }
-
     }
     if (document.querySelector("title").getAttribute("id") == "site3") {
         for (let i: number = 0; i < allObjects.Saddle.length; i++) {
@@ -47,7 +52,6 @@ namespace Aufgabe2_5 {
             document.body.appendChild(unycicleelements);
             console.log(unycicleelements);
         }
-
     }
 
     function safe(_input: MouseEvent): void {
@@ -59,27 +63,27 @@ namespace Aufgabe2_5 {
             localStorage.setItem("chosenwheelpicture", output.dataset.safeimg);
             window.location.href = "index2.html";
         }
-       
+
         if (document.querySelector("title").getAttribute("id") == "site2") {
             console.log(output.dataset.safeway);
             localStorage.setItem("chosenpole", output.dataset.safeway);
             localStorage.setItem("chosenpolepicture", output.dataset.safeimg);
             window.location.href = "index3.html";
         }
-       
+
         if (document.querySelector("title").getAttribute("id") == "site3") {
             console.log(output.dataset.safeway);
             localStorage.setItem("chosensaddle", output.dataset.safeway);
             localStorage.setItem("chosensaddlepicture", output.dataset.safeimg);
             window.location.href = "index4.html";
         }
-       
     }
+
     if (document.querySelector("title").getAttribute("id") == "site2") {
         let div: HTMLDivElement = document.createElement("div");
         document.body.appendChild(div);
-     
-      
+
+
         let wheelpicture: HTMLImageElement = document.createElement("img");
         wheelpicture.src = localStorage.getItem("chosenwheelpicture");
         wheelpicture.style.marginTop = "40px";
@@ -87,11 +91,12 @@ namespace Aufgabe2_5 {
         wheelpicture.style.width = "200px";
         div.appendChild(wheelpicture);
     }
+
     if (document.querySelector("title").getAttribute("id") == "site3") {
         let div: HTMLDivElement = document.createElement("div");
         div.style.maxWidth = "250px";
         document.body.appendChild(div);
-     
+
         let polepicture: HTMLImageElement = document.createElement("img");
         polepicture.src = localStorage.getItem("chosenpolepicture");
         polepicture.style.height = "300px";
@@ -106,14 +111,15 @@ namespace Aufgabe2_5 {
         wheelpicture.style.marginLeft = "588px";
         div.appendChild(wheelpicture);
     }
+
     if (document.querySelector("title").getAttribute("id") == "site4") {
 
         let chooseButton: HTMLElement = document.createElement("Button");
-            let textChooseButton: Text = document.createTextNode("Konfigurator neu starten");
-            chooseButton.appendChild(textChooseButton);
-            document.body.appendChild(chooseButton);
-            chooseButton.addEventListener("click", restart);
-            chooseButton.style.marginLeft = "650px";
+        let textChooseButton: Text = document.createTextNode("Konfigurator neu starten");
+        chooseButton.appendChild(textChooseButton);
+        document.body.appendChild(chooseButton);
+        chooseButton.addEventListener("click", restart);
+        chooseButton.style.marginLeft = "650px";
 
         function restart(): void {
             window.location.href = "index.html";
@@ -145,7 +151,4 @@ namespace Aufgabe2_5 {
         wheelpicture.style.marginLeft = "590px";
         div.appendChild(wheelpicture);
     }
-
-
-
 }
