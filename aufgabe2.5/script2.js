@@ -2,14 +2,7 @@
 var Aufgabe2_5;
 (function (Aufgabe2_5) {
     //export let myObj = JSON.parse(optionsJSON);
-    async function communicate(_url) {
-        let response = await fetch(_url);
-        console.log("Response", response);
-        let answer = await response.json();
-        console.log(answer);
-    }
-    communicate("https://github.com/benjamin-maier/GIS-SoSe2021/blob/main/aufgabe2.5/data.json");
-    let allObjects = response.json();
+    //let allObjects: Unycicle = response.json();
     function createOptions(_part) {
         let div = document.createElement("div");
         div.style.maxWidth = "150px";
@@ -29,25 +22,27 @@ var Aufgabe2_5;
         chooseButton.dataset.safeimg = _part.image;
         return div;
     }
-    if (document.querySelector("title").getAttribute("id") == "site1") {
-        for (let i = 0; i < allObjects.Wheel.length; i++) {
-            let unycicleelements = createOptions(allObjects.Wheel[i]);
-            document.body.appendChild(unycicleelements);
-            console.log(unycicleelements);
+    function selection(allObjects) {
+        if (document.querySelector("title").getAttribute("id") == "site1") {
+            for (let i = 0; i < allObjects.Wheel.length; i++) {
+                let unycicleelements = createOptions(allObjects.Wheel[i]);
+                document.body.appendChild(unycicleelements);
+                console.log(unycicleelements);
+            }
         }
-    }
-    if (document.querySelector("title").getAttribute("id") == "site2") {
-        for (let i = 0; i < allObjects.Pole.length; i++) {
-            let unycicleelements = createOptions(allObjects.Pole[i]);
-            document.body.appendChild(unycicleelements);
-            console.log(unycicleelements);
+        if (document.querySelector("title").getAttribute("id") == "site2") {
+            for (let i = 0; i < allObjects.Pole.length; i++) {
+                let unycicleelements = createOptions(allObjects.Pole[i]);
+                document.body.appendChild(unycicleelements);
+                console.log(unycicleelements);
+            }
         }
-    }
-    if (document.querySelector("title").getAttribute("id") == "site3") {
-        for (let i = 0; i < allObjects.Saddle.length; i++) {
-            let unycicleelements = createOptions(allObjects.Saddle[i]);
-            document.body.appendChild(unycicleelements);
-            console.log(unycicleelements);
+        if (document.querySelector("title").getAttribute("id") == "site3") {
+            for (let i = 0; i < allObjects.Saddle.length; i++) {
+                let unycicleelements = createOptions(allObjects.Saddle[i]);
+                document.body.appendChild(unycicleelements);
+                console.log(unycicleelements);
+            }
         }
     }
     function safe(_input) {
@@ -131,5 +126,29 @@ var Aufgabe2_5;
         wheelpicture.style.marginLeft = "590px";
         div.appendChild(wheelpicture);
     }
+    async function communicate(_url) {
+        let response = await fetch(_url);
+        console.log("Response", response);
+        let s = await response.json();
+        console.log(s);
+        selection(s);
+    }
+    communicate("https://github.com/benjamin-maier/GIS-SoSe2021/blob/main/aufgabe2.5/data.json");
+    async function Data(_url) {
+        let query = new URLSearchParams(localStorage);
+        _url = _url + "?" + query.toString();
+        let answer = await fetch(_url);
+        let output = await answer.json();
+        let displayResponse = document.getElementById("message");
+        if (output.error) {
+            displayResponse.className = "Error";
+            displayResponse.innerText = output.error;
+        }
+        else {
+            displayResponse.className = "Message";
+            displayResponse.innerText = output.Message;
+        }
+    }
+    Data("https://gis-communication.herokuapp.com");
 })(Aufgabe2_5 || (Aufgabe2_5 = {}));
 //# sourceMappingURL=script2.js.map

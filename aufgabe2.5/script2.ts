@@ -2,15 +2,7 @@ namespace Aufgabe2_5 {
 
     //export let myObj = JSON.parse(optionsJSON);
 
-    async function communicate(_url: RequestInfo): Promise<void> {
-        let response: Response = await fetch(_url);
-        console.log("Response", response);
-        let answer: Content = await response.json();
-        console.log(answer);
-    }
-    communicate("https://github.com/benjamin-maier/GIS-SoSe2021/blob/main/aufgabe2.5/data.json");
-
-    let allObjects: Unycicle = response.json();
+    //let allObjects: Unycicle = response.json();
 
     function createOptions(_part: Content): HTMLElement {
         let div: HTMLDivElement = document.createElement("div");
@@ -32,6 +24,7 @@ namespace Aufgabe2_5 {
         return div;
     }
 
+    function selection (allObjects: Unycicle): void{
     if (document.querySelector("title").getAttribute("id") == "site1") {
         for (let i: number = 0; i < allObjects.Wheel.length; i++) {
             let unycicleelements: HTMLElement = createOptions(allObjects.Wheel[i]);
@@ -53,6 +46,7 @@ namespace Aufgabe2_5 {
             console.log(unycicleelements);
         }
     }
+}
 
     function safe(_input: MouseEvent): void {
         let output: HTMLElement = <HTMLElement>_input.target;
@@ -151,4 +145,36 @@ namespace Aufgabe2_5 {
         wheelpicture.style.marginLeft = "590px";
         div.appendChild(wheelpicture);
     }
+
+    async function communicate(_url: RequestInfo): Promise<void> {
+        let response: Response = await fetch(_url);
+        console.log("Response", response);
+        let s: Unycicle = await response.json();
+        console.log(s);
+        selection(s);
+
+    }
+
+    export interface Answer {
+        [key: string]: string;
+    }
+    communicate("https://github.com/benjamin-maier/GIS-SoSe2021/blob/main/aufgabe2.5/data.json");
+
+    async function Data(_url: RequestInfo): Promise <void> {
+        let query: URLSearchParams = new URLSearchParams(localStorage);
+        _url = _url + "?" + query.toString();
+        let answer: Response = await fetch(_url);
+        let output: Answer = await answer.json();
+        let displayResponse: HTMLDivElement = <HTMLParagraphElement>document.getElementById("message");
+        if (output.error) {
+            displayResponse.className = "Error";
+            displayResponse.innerText = output.error;
+        }
+        
+        else {
+            displayResponse.className = "Message";
+            displayResponse.innerText = output.Message;
+        }
+    }
+    Data("https://gis-communication.herokuapp.com");
 }
