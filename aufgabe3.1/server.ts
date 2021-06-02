@@ -9,7 +9,7 @@ export namespace P_3_1Server {
     let server: Http.Server = Http.createServer(); //http-Server wird erstellt
     server.addListener("request", handleRequest); //Ein Listener für "handleRequest" wird erschaffen
     server.addListener("listening", handleListen); //Ein Listener für "handleListen" wird erschaffen
-    server.listen(port); //Der Server wartet auf Anweisung des Ports
+    server.listen(port); //Dem Server wird der Port mitgeteilt, auf den er achten soll
 
     function handleListen(): void {//handleListen wird initialisiert
         console.log("Listening"); //"Listening" wird ausgegeben
@@ -21,7 +21,7 @@ export namespace P_3_1Server {
 
         _response.setHeader("content-type", "text/html; charset=utf-8"); //HTML-Eigenschaften werden definiert
         _response.setHeader("Access-Control-Allow-Origin", "*"); // Die Zugriffserlaubnis wird definiert
-        _response.write(_request.url); //write wird für die url aufgerufen
+        _response.write(_request.url); //url wird in die Antwort geschrieben
         _response.end(); //Nachdem die Antwort erhalten wurde, wird beendet
     }
 }

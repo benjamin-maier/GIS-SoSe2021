@@ -1,0 +1,19 @@
+{
+  "name": "gissose-2021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node aufgabe3.1/script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjamin-maier/GIS-SoSe2021.git"
+  },
+  "author": "Benjamin Maier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjamin-maier/GIS-SoSe2021/issues"
+  },
+  "homepage": "https://github.com/benjamin-maier/GIS-SoSe2021#readme"
+}
