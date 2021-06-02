@@ -12,12 +12,12 @@ export namespace P_3_1Server {
     server.listen(port); //Dem Server wird der Port mitgeteilt, auf den er achten soll
 
     function handleListen(): void {//handleListen wird initialisiert
-        console.log("Listening"); //"Listening" wird ausgegeben
+       // console.log("Listening"); //"Listening" wird ausgegeben
     }
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void { //handleRequest wird initialisiert
         console.log("I hear voices!"); //"I hear voices!" wird ausgegeben
-        console.log(_request.url); //Die url wird ebenfalls ausgegeben
+        //console.log(_request.url); //Die url wird ebenfalls ausgegeben
 
         _response.setHeader("content-type", "text/html; charset=utf-8"); //HTML-Eigenschaften werden definiert
         _response.setHeader("Access-Control-Allow-Origin", "*"); // Die Zugriffserlaubnis wird definiert
