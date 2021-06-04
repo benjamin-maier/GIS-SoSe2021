@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <script src="client.js" defer></script>
+    <title>Registrierung</title>
+</head>
+<body>
+    <form action="https://gissose-2021.herokuapp.com" method="GET">  
+        
+        <h1>Hier registrieren!</h1>
+        
+
+        <label for="username">Nutzername::</label> <br>
+        <input type="text" name="username" id="username"><br>
+
+        <label for="birthday">Geburtstag:</label> <br>
+        <input type="text" name="birthday" id="birthday"><br>
+
+        <label for="password">Passwort:</label> <br>
+        <input type="text" name="password" id="password"><br>
+
+        
+
+
+        <button id = "JSONButton" type="button" id="button">sendJSON</button> 
+        <button id = "HTMLButton" type="button" id="button">sendHTML</button>
+
+        <p> Nach der Erstellung erscheinen Ihre Account-Details hier:</p>
+        <p id="serverausgabe"></p>
+
+    </form>
+    
+</body>
+</html>
