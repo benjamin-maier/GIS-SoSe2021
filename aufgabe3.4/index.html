@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <script src="client.js" defer></script>
+
+    <title>Registrierung</title>
+</head>
+<body>
+    <form>  
+        
+        <h1>Hier Registrieren:</h1>
+        
+        <label for="firstname">Vorname:</label><br>
+        <input type="text" name="firstname" id="firstname"><br>
+
+        <label for="lastname">Nachname:</label> <br>
+        <input type="text" name="lastname" id="lastname"><br>
+
+     
+        <p>Tragen Sie hier Ihre Sonderwünsche zur Registrierung ein:</p>
+        <input type="text" name="extras" id="extras"><br>
+
+    
+
+        <button id = "sendData" type="button">Registrieren</button> 
+        <button id = "showData" type="button">Details anzeigen</button>
+
+       
+
+        <p>Ihre Daten:</p>
+        <div id="data"></div>
+
+    
+</body>
+</html>
