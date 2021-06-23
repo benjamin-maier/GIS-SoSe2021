@@ -1,8 +1,9 @@
 namespace Aufgabe3_4 {
     
+    let url: RequestInfo = "https://gissose-2021.herokuapp.com";
+
     async function sendData(): Promise<void> {
         let formData: FormData = new FormData (document.forms[0]);
-        let url: RequestInfo = "https://gissose-2021.herokuapp.com/";
 
         url += "/sendData";
 
@@ -21,8 +22,6 @@ namespace Aufgabe3_4 {
 
     async function showData(): Promise <void> { 
         let formData: FormData = new FormData (document.forms[0]);
-
-        let url: RequestInfo = "https://gissose-2021.herokuapp.com/";
 
         url += "/showData";
 
