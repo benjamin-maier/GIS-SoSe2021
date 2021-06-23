@@ -6,7 +6,7 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var Aufgabe3_4;
 (function (Aufgabe3_4) {
-    let urlDB = "mongodb+srv://itsbennymaier:<password>@istebbnymaier-BennyCluster.8i9as.mongodb.net/GIS-SOSE2021?retryWrites=true&w=majority";
+    let urlDB = "mongodb+srv://itsbennymaier:<password>@itsbennymaier-BennyCluster.8i9as.mongodb.net/GIS-SOSE2021?retryWrites=true&w=majority";
     let port = Number(process.env.PORT);
     if (!port)
         port = 8100;

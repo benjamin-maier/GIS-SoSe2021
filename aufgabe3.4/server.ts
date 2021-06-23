@@ -4,7 +4,7 @@ import * as Mongo from "mongodb";
 
 export namespace Aufgabe3_4 {
 
-let urlDB: string = "mongodb+srv://itsbennymaier:<password>@istebbnymaier-BennyCluster.8i9as.mongodb.net/GIS-SOSE2021?retryWrites=true&w=majority";
+let urlDB: string = "mongodb+srv://itsbennymaier:<password>@itsbennymaier-BennyCluster.8i9as.mongodb.net/GIS-SOSE2021?retryWrites=true&w=majority";
 
 let port: number = Number(process.env.PORT);
 if (!port)
