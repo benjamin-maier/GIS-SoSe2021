@@ -4,7 +4,7 @@ import * as Mongo from "mongodb";
 
 export namespace Aufgabe3_4 {
 
-let urlDB: string = "mongodb+srv://itsbennymaier:<password>@itsbennymaier-BennyCluster.8i9as.mongodb.net/GIS-SOSE2021?retryWrites=true&w=majority";
+let urlDB: string = "mongodb+srv://itsbennymaier:HFUProgrammieren@bennycluster.ehhg0.mongodb.net/Abgabe3_4?retryWrites=true&w=majority";
 
 let port: number = Number(process.env.PORT);
 if (!port)
@@ -72,7 +72,7 @@ async function safe(_url: string, _petition: Petition): Promise <string> {
     await mongoClient.connect();
 
 
-    let infos: Mongo.Collection = mongoClient.db("Abgabe_3_4").collection("Registrierung");
+    let infos: Mongo.Collection = mongoClient.db("Abgabe3_4").collection("daten");
 
     infos.insertOne (_petition);
 
@@ -90,7 +90,7 @@ async function readDB(_url: string): Promise <Petition[]> {
     await mongoClient.connect();
 
 
-    let infos: Mongo.Collection = mongoClient.db("Abgabe_3_4").collection("Registrierung");
+    let infos: Mongo.Collection = mongoClient.db("Abgabe3_4").collection("daten");
     let cursor: Mongo.Cursor = infos.find ();
     let result: Petition[] = await cursor.toArray();
 

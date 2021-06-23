@@ -1,8 +1,6 @@
 "use strict";
 var Aufgabe3_4;
 (function (Aufgabe3_4) {
-    let sendButton = document.getElementById("sendData");
-    sendButton.addEventListener("click", sendData);
     async function sendData() {
         let formData = new FormData(document.forms[0]);
         let url = "https://gissose-2021.herokuapp.com/";
@@ -13,9 +11,8 @@ var Aufgabe3_4;
         let distribution = await responseData.text();
         console.log(distribution);
     }
-    let showButton = document.getElementById("showData");
-    showButton.addEventListener("click", showData);
-    let returnedData = document.getElementById("data");
+    document.getElementById("showData").addEventListener("click", showData);
+    document.getElementById("data").addEventListener("click", sendData);
     async function showData() {
         let formData = new FormData(document.forms[0]);
         let url = "https://gissose-2021.herokuapp.com/";
@@ -26,5 +23,6 @@ var Aufgabe3_4;
         let distribution = await responseData.text();
         returnedData.innerHTML = distribution;
     }
+    let returnedData = document.getElementById("data");
 })(Aufgabe3_4 || (Aufgabe3_4 = {}));
 //# sourceMappingURL=client.js.map

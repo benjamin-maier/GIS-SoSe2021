@@ -1,8 +1,4 @@
 namespace Aufgabe3_4 {
-
-    let sendButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("sendData"); 
-    sendButton.addEventListener("click", sendData); 
-
     
     async function sendData(): Promise<void> {
         let formData: FormData = new FormData (document.forms[0]);
@@ -20,12 +16,9 @@ namespace Aufgabe3_4 {
     }
 
 
-    let showButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("showData"); 
+    document.getElementById("showData").addEventListener("click", showData);
 
-    showButton.addEventListener("click", showData);
-
-    let returnedData: HTMLDivElement = <HTMLDivElement> document.getElementById("data");
-
+    document.getElementById("data").addEventListener("click", sendData);
 
     async function showData(): Promise <void> { 
         let formData: FormData = new FormData (document.forms[0]);
@@ -44,4 +37,5 @@ namespace Aufgabe3_4 {
 
         returnedData.innerHTML = distribution;
     }
+    let returnedData: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("data");
 }

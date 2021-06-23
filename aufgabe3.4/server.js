@@ -6,7 +6,7 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var Aufgabe3_4;
 (function (Aufgabe3_4) {
-    let urlDB = "mongodb+srv://itsbennymaier:<password>@itsbennymaier-BennyCluster.8i9as.mongodb.net/GIS-SOSE2021?retryWrites=true&w=majority";
+    let urlDB = "mongodb+srv://itsbennymaier:HFUProgrammieren@bennycluster.ehhg0.mongodb.net/Abgabe3_4?retryWrites=true&w=majority";
     let port = Number(process.env.PORT);
     if (!port)
         port = 8100;
@@ -41,7 +41,7 @@ var Aufgabe3_4;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let infos = mongoClient.db("Abgabe_3_4").collection("Registrierung");
+        let infos = mongoClient.db("Abgabe3_4").collection("daten");
         infos.insertOne(_petition);
         let responseString = "Erfolgreich gespeichert!";
         return responseString;
@@ -50,7 +50,7 @@ var Aufgabe3_4;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let infos = mongoClient.db("Abgabe_3_4").collection("Registrierung");
+        let infos = mongoClient.db("Abgabe3_4").collection("daten");
         let cursor = infos.find();
         let result = await cursor.toArray();
         return result;
