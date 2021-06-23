@@ -8,11 +8,10 @@ var Aufgabe3_4;
         let query = new URLSearchParams(formData);
         url = url + "?" + query.toString();
         let responseData = await fetch(url);
-        let distribution = await responseData.text();
-        console.log(distribution);
+        console.log(responseData);
     }
     document.getElementById("showData").addEventListener("click", showData);
-    document.getElementById("data").addEventListener("click", sendData);
+    document.getElementById("sendData").addEventListener("click", sendData);
     async function showData() {
         let formData = new FormData(document.forms[0]);
         let url = "https://gissose-2021.herokuapp.com/";

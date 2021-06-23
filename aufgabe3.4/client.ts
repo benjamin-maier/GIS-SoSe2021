@@ -10,15 +10,14 @@ namespace Aufgabe3_4 {
         url = url + "?" + query.toString();
 
         let responseData: Response = await fetch (url);
-        let distribution: string = await responseData.text();
 
-        console.log(distribution);
+        console.log(responseData);
     }
 
 
     document.getElementById("showData").addEventListener("click", showData);
 
-    document.getElementById("data").addEventListener("click", sendData);
+    document.getElementById("sendData").addEventListener("click", sendData);
 
     async function showData(): Promise <void> { 
         let formData: FormData = new FormData (document.forms[0]);
