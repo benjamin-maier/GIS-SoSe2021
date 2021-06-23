@@ -19,6 +19,7 @@ var Aufgabe3_4;
         url = url + "?" + query.toString();
         let responseData = await fetch(url);
         let distribution = await responseData.text();
+        console.log("Ich habe etwas empfangen!");
         returnedData.innerHTML = distribution;
     }
     let returnedData = document.getElementById("data");

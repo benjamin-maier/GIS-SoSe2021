@@ -15,7 +15,6 @@ namespace Aufgabe3_4 {
         console.log(responseData);
     }
 
-
     document.getElementById("showData").addEventListener("click", showData);
 
     document.getElementById("sendData").addEventListener("click", sendData);
@@ -32,6 +31,8 @@ namespace Aufgabe3_4 {
         let responseData: Response = await fetch (url);
 
         let distribution: string = await responseData.text();
+
+        console.log("Ich habe etwas empfangen!");
 
         returnedData.innerHTML = distribution;
     }

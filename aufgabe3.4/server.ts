@@ -52,9 +52,10 @@ async function handleRequest(_request: Http.IncomingMessage, _response: Http.Ser
         else if (pathname == "/showData") { 
 
             let serverResponse: Petition[] = await readDB(urlDB);
-            console.log(serverResponse);
             
             _response.write(JSON.stringify(serverResponse));
+
+            console.log(serverResponse);
         }     
     }
 

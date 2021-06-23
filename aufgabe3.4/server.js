@@ -31,8 +31,8 @@ var Aufgabe3_4;
             }
             else if (pathname == "/showData") {
                 let serverResponse = await readDB(urlDB);
-                console.log(serverResponse);
                 _response.write(JSON.stringify(serverResponse));
+                console.log(serverResponse);
             }
         }
         _response.end();
