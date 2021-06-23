@@ -32,8 +32,6 @@ namespace Aufgabe3_4 {
 
         let distribution: string = await responseData.text();
 
-        console.log("Ich habe etwas empfangen!");
-
         returnedData.innerHTML = distribution;
     }
     let returnedData: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("data");
