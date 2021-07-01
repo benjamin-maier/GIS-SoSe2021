@@ -42,7 +42,7 @@ function startCreatedServer (_serverPort: number | string): void {
 async function handleUserRequest(_userRequest: Http.IncomingMessage, _serverResponse: Http.ServerResponse): Promise<void> {
 
     _serverResponse.setHeader("content-type", "text/html; charset=utf-8");
-    _serverResponse.setHeader("Acess-Control-Allow-Origin", "*");
+    _serverResponse.setHeader("Access-Control-Allow-Origin", "*");
 
     //Abfrage nach der URL
     if (_userRequest.url) {

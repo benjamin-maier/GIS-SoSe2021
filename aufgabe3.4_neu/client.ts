@@ -19,6 +19,7 @@ async function sendEnteredData(): Promise<void> {
     url += "?" + urlExtra.toString();
 
     await fetch (url);
+    console.log("Daten wurden erfasst.");
 }
 
 

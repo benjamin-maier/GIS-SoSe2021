@@ -13,6 +13,7 @@ var Aufgabe3_4_neu;
         let urlExtra = new URLSearchParams(enteredData);
         url += "?" + urlExtra.toString();
         await fetch(url);
+        console.log("Daten wurden erfasst.");
     }
     //Funktion showSafedData, um die Daten anzuzeigen die in der Datenbank gespeichert sind
     async function showSafedData() {
