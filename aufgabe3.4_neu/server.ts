@@ -58,6 +58,13 @@ async function handleUserRequest(_userRequest: Http.IncomingMessage, _serverResp
             _serverResponse.write(enteredData);
         }
 
+        //Abfrage, ob deleteEnteredData abgerufen wird
+        if (urlPathname == "/deleteEnteredData") {
+
+            let enteredData: string = await deleteEnteredData (urlDatabank, formularData);
+            _serverResponse.write(enteredData);
+        }
+
         //Abfrage, ob showSafedData abgerufen wird
         if (urlPathname == "/showSafedData") {
 
@@ -95,6 +102,21 @@ async function readDataFromDatabank(_requestedUrl: string): Promise <formularDat
     let databaseCursor: Mongo.Cursor = collectionDetails.find();
     let databaseSerachResult: formularData[] = await databaseCursor.toArray();
     return databaseSerachResult;
+}
+
+
+//Funktion, um Daten in der Datenbank zu löschen
+async function deleteEnteredData(_requestedUrl:string, _formularData: formularData): Promise<string> {
+    
+    let mongoDetails: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+    let mongoClientDetails: Mongo.MongoClient = new Mongo.MongoClient(_requestedUrl, mongoDetails);
+    await mongoClientDetails.connect();
+
+    let collectionDetails: Mongo.Collection = mongoClientDetails.db("Abgabe3_4").collection("students");
+    collectionDetails.deleteOne(_formularData);
+
+    let databaseResponseString: string = "Die Daten wurden erfolgreich entfernt!"
+    return databaseResponseString;
 }
 
 

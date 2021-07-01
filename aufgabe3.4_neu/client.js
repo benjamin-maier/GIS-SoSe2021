@@ -6,6 +6,7 @@ var Aufgabe3_4_neu;
     //Eventlistener für die beiden Buttons
     document.getElementById("sendButton").addEventListener("click", sendEnteredData);
     document.getElementById("sendButton").addEventListener("click", showSafedData);
+    document.getElementById("deleteButton").addEventListener("click", deleteEnteredData);
     //Funktion sendEnteredData, um die eingegebenen Daten an die Datenbank zu schicken
     async function sendEnteredData() {
         let enteredData = new FormData(document.forms[0]);
@@ -26,5 +27,14 @@ var Aufgabe3_4_neu;
         responseData.innerHTML = databankData;
     }
     let responseData = document.getElementById("dataOutput");
+    //Funktion deleteEnteredData, um die eingegebenen Daten an die Datenbank zu schicken
+    async function deleteEnteredData() {
+        let enteredData = new FormData(document.forms[0]);
+        url += "/deleteEnteredData";
+        let urlExtra = new URLSearchParams(enteredData);
+        url += "?" + urlExtra.toString();
+        await fetch(url);
+        console.log("Daten wurden entfernt.");
+    }
 })(Aufgabe3_4_neu || (Aufgabe3_4_neu = {}));
 //# sourceMappingURL=client.js.map
