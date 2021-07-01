@@ -22,6 +22,7 @@ var Aufgabe3_4_neu;
     }
     //Funktion um mit der User-Anfrage umgehen zu können
     async function handleUserRequest(_userRequest, _serverResponse) {
+        console.log("Request angekommen.");
         _serverResponse.setHeader("Access-Control-Allow-Origin", "*");
         _serverResponse.setHeader("content-type", "text/html; charset=utf-8");
         //Abfrage nach der URL
