@@ -1,4 +1,4 @@
-export namespace Aufgabe3_4_neu{
+namespace Aufgabe3_4_neu{
 
 //Url für die Server-Verbindung
 let url: RequestInfo = "https://gissose-2021.herokuapp.com";

@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Aufgabe3_4_neu = void 0;
 var Aufgabe3_4_neu;
 (function (Aufgabe3_4_neu) {
     //Url für die Server-Verbindung
@@ -27,5 +25,5 @@ var Aufgabe3_4_neu;
         responseData.innerHTML = databankData;
     }
     let responseData = document.getElementById("dataOutput");
-})(Aufgabe3_4_neu = exports.Aufgabe3_4_neu || (exports.Aufgabe3_4_neu = {}));
+})(Aufgabe3_4_neu || (Aufgabe3_4_neu = {}));
 //# sourceMappingURL=client.js.map
