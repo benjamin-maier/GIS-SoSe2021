@@ -20,30 +20,35 @@ var Aufgabe3_4_neu;
         createdServer.listen(_serverPort);
         createdServer.addListener("request", handleUserRequest);
     }
+    let newUrl;
     //Funktion um mit der User-Anfrage umgehen zu können
     async function handleUserRequest(_userRequest, _serverResponse) {
         console.log("Request angekommen.");
         _serverResponse.setHeader("Access-Control-Allow-Origin", "*");
         _serverResponse.setHeader("content-type", "text/html; charset=utf-8");
         //Abfrage nach der URL
-        if (_userRequest.url) {
-            let newUrl = Url.parse(_userRequest.url, true);
-            let urlPathname = newUrl.pathname;
-            let formularData = { lastname: newUrl.query.lastname + "", firstname: newUrl.query.firstname + "", number: newUrl.query.number + "", module: newUrl.query.module + "" };
+        if (_userRequest.url != undefined) {
+            newUrl = Url.parse(_userRequest.url, true);
+            //let formularData: formularData = {lastname: newUrl.query.lastname + "", firstname: newUrl.query.firstname + "", number: newUrl.query.number + "", module: newUrl.query.module + ""};
+            let formularData = { "number": newUrl.query.number.toString() };
+            console.log("Matrikelnummer:" + newUrl.query.number);
             //Abfrage, ob sendEnteredData abgerufen wird
-            if (urlPathname == "/sendEnteredData") {
+            if (newUrl.pathname == "/sendEnteredData") {
+                console.log("sendEnteredData wird ausgeführt");
                 let enteredData = await safeEnteredData(urlDatabank, formularData);
                 _serverResponse.write(enteredData);
             }
             //Abfrage, ob deleteEnteredData abgerufen wird
-            if (urlPathname == "/deleteEnteredData") {
+            if (newUrl.pathname == "/deleteEnteredData") {
+                console.log("deleteEnteredData wird ausgeführt");
                 let enteredData = await deleteEnteredData(urlDatabank, formularData);
                 _serverResponse.write(enteredData);
             }
             //Abfrage, ob showSafedData abgerufen wird
-            if (urlPathname == "/showSafedData") {
+            if (newUrl.pathname == "/showSafedData") {
+                console.log("showSafedData wird ausgeführt");
                 let serverResponseArray = await readDataFromDatabank(urlDatabank);
-                _serverResponse.write(serverResponseArray);
+                _serverResponse.write(JSON.stringify(serverResponseArray));
             }
         }
         _serverResponse.end();
