@@ -22,8 +22,8 @@ var Aufgabe3_4_neu;
     }
     //Funktion um mit der Useranfrage umgehen zu können
     async function handleUserRequest(_userRequest, _serverResponse) {
-        _serverResponse.setHeader("content-type", "text/html; charset=utf-8");
         _serverResponse.setHeader("Access-Control-Allow-Origin", "*");
+        _serverResponse.setHeader("content-type", "text/html; charset=utf-8");
         //Abfrage nach der URL
         if (_userRequest.url) {
             let newUrl = Url.parse(_userRequest.url, true);

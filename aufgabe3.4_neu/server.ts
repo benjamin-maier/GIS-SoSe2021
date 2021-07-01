@@ -41,8 +41,8 @@ function startCreatedServer (_serverPort: number | string): void {
 //Funktion um mit der Useranfrage umgehen zu können
 async function handleUserRequest(_userRequest: Http.IncomingMessage, _serverResponse: Http.ServerResponse): Promise<void> {
 
-    _serverResponse.setHeader("content-type", "text/html; charset=utf-8");
     _serverResponse.setHeader("Access-Control-Allow-Origin", "*");
+    _serverResponse.setHeader("content-type", "text/html; charset=utf-8");
 
     //Abfrage nach der URL
     if (_userRequest.url) {
