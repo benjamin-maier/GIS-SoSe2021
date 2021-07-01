@@ -3,16 +3,7 @@ import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
 
-
 export namespace Aufgabe3_4_neu {
-
-//Interface für das Formular
-interface formularData {
-    lastname: string;
-    firstname: string;
-    number: string;
-    module: string;
-}    
 
 
 //URL der Datenbank-Verbindung festlegen (MongoAtlas)
@@ -69,7 +60,7 @@ async function handleUserRequest(_userRequest: Http.IncomingMessage, _serverResp
         if (urlPathname == "/showSafedData") {
 
             let serverResponseArray: formularData[] = await readDataFromDatabank(urlDatabank);
-            _serverResponse.write(JSON.stringify(serverResponseArray));
+            _serverResponse.write(serverResponseArray);
         }
     }
     _serverResponse.end();

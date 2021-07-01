@@ -42,7 +42,7 @@ var Aufgabe3_4_neu;
             //Abfrage, ob showSafedData abgerufen wird
             if (urlPathname == "/showSafedData") {
                 let serverResponseArray = await readDataFromDatabank(urlDatabank);
-                _serverResponse.write(JSON.stringify(serverResponseArray));
+                _serverResponse.write(serverResponseArray);
             }
         }
         _serverResponse.end();

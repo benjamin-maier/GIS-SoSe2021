@@ -7,7 +7,6 @@ namespace Aufgabe3_4_neu {
     //Eventlistener für die beiden Buttons
     document.getElementById("sendButton").addEventListener("click", sendEnteredData);
     document.getElementById("showButton").addEventListener("click", showSafedData);
-    document.getElementById("deleteButton").addEventListener("click", deleteEnteredData);
 
 
     //Funktion sendEnteredData, um die eingegebenen Daten an die Datenbank zu schicken
@@ -34,23 +33,49 @@ namespace Aufgabe3_4_neu {
         url += "?" + urlExtra.toString();
 
         let returnedData: Response = await fetch(url);
-        let databankData: string = await returnedData.text();
+        let databankData: formularData[] = await returnedData.json();
 
-        responseData.innerHTML = databankData;
-    }
-    let responseData: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("dataOutput");
+        let responseData: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("dataOutput");
 
+        for (let i = 0; i < databankData.length; i++) {
 
-    //Funktion deleteEnteredData, um die eingegebenen Daten an die Datenbank zu schicken
-    async function deleteEnteredData(): Promise<void> {
+            let lastnameData: HTMLParagraphElement = document.createElement("p");
+            let firstnameData: HTMLParagraphElement = document.createElement("p");
+            let numberData: HTMLParagraphElement = document.createElement("p");
+            let moduleData: HTMLParagraphElement = document.createElement("p");
+            let emptyLine: HTMLParagraphElement = document.createElement("p");
 
-        let enteredData: FormData = new FormData(document.forms[0]);
-        url += "/deleteEnteredData";
+            lastnameData.innerHTML = databankData[i].lastname;
+            firstnameData.innerHTML = databankData[i].firstname;
+            numberData.innerHTML = databankData[i].number;
+            moduleData.innerHTML = databankData[i].module;
 
-        let urlExtra: URLSearchParams = new URLSearchParams(<any>enteredData);
-        url += "?" + urlExtra.toString();
+            responseData.appendChild(lastnameData);
+            responseData.appendChild(firstnameData);
+            responseData.appendChild(numberData);
+            responseData.appendChild(moduleData);
+            responseData.appendChild(emptyLine);
 
-        await fetch(url);
-        console.log("Daten wurden entfernt.");
+            let deleteButton: HTMLButtonElement = document.createElement("button");
+            deleteButton.innerHTML = "Löschen";
+            emptyLine.appendChild(deleteButton);
+
+            deleteButton.addEventListener("click", deleteSafedData);
+
+            async function deleteSafedData(): Promise<void> {
+
+                url += "/deleteSafedData";
+        
+                url += "?lastname=" + databankData[i].lastname + "&firstname=" + databankData[i].firstname + "&number=" + databankData[i].number + "&module=" + databankData[i].module;
+        
+                let fetchResponse: Response = await fetch(url);
+
+                let displayResponse: string = await fetchResponse.text();
+
+                responseData.innerHTML = displayResponse;
+
+                console.log(urlExtra.toString());
+            }
+        }
     }
 }
