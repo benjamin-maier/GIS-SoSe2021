@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <script src="client.js" defer></script>
+
+    <title>Studenten-Service</title>
+</head>
+
+<body>
+    <h1>Die HFU-Studenten-Datenbank</h1>
+    <h2>Tragen Sie Ihre Daten in das folgende Formular ein:</h2>
+
+    <form name="Registrierung">
+        <label for="lastname">Name:</label>
+        <br>
+        <input type="text" name="lastname" id="lastname">
+        <br>
+        <label for="firstname">Vorname:</label>
+        <br>
+        <input type="text" name="firstname" id="firstname">
+        <br>
+        <label for="number">Matrikelnummer:</label>
+        <br>
+        <input type="text" name="number" id="number">
+        <br>
+        <label for="module">Lieblingsmodul:</label>
+        <br>
+        <input type="text" name="module" id="module">
+    </form>
+
+    <br>
+
+    <button id="sendButton" type="button">Speichern</button>
+
+    <button id="showButton" type="button">Anzeigen</button>
+
+    <h3>Erfasste Studenten:</h3>
+    <div id=dataOutput></div>
+</body>
+
+</html>
