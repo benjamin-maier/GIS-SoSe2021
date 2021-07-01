@@ -38,7 +38,7 @@ function startCreatedServer (_serverPort: number | string): void {
 }
 
 
-//Funktion um mit der Useranfrage umgehen zu können
+//Funktion um mit der User-Anfrage umgehen zu können
 async function handleUserRequest(_userRequest: Http.IncomingMessage, _serverResponse: Http.ServerResponse): Promise<void> {
 
     _serverResponse.setHeader("Access-Control-Allow-Origin", "*");
@@ -86,12 +86,12 @@ async function safeEnteredData(_requestedUrl:string, _formularData: formularData
     let collectionDetails: Mongo.Collection = mongoClientDetails.db("Abgabe3_4").collection("students");
     collectionDetails.insertOne(_formularData);
 
-    let databaseResponseString: string = "Die Daten wurden erfolgreich gespeichert!"
+    let databaseResponseString: string = "Die Daten wurden erfolgreich gespeichert!";
     return databaseResponseString;
 }
 
 
-//Funktion, um die Daten aus der Datenbank anzeigen zu lassen
+//Funktion, um die Daten aus der Datenbank auf der Seite anzeigen zu lassen
 async function readDataFromDatabank(_requestedUrl: string): Promise <formularData[]> {
     
     let mongoDetails: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
@@ -115,7 +115,7 @@ async function deleteEnteredData(_requestedUrl:string, _formularData: formularDa
     let collectionDetails: Mongo.Collection = mongoClientDetails.db("Abgabe3_4").collection("students");
     collectionDetails.deleteOne(_formularData);
 
-    let databaseResponseString: string = "Die Daten wurden erfolgreich entfernt!"
+    let databaseResponseString: string = "Die Daten wurden erfolgreich entfernt!";
     return databaseResponseString;
 }
 

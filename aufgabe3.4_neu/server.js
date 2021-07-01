@@ -20,7 +20,7 @@ var Aufgabe3_4_neu;
         createdServer.listen(_serverPort);
         createdServer.addListener("request", handleUserRequest);
     }
-    //Funktion um mit der Useranfrage umgehen zu können
+    //Funktion um mit der User-Anfrage umgehen zu können
     async function handleUserRequest(_userRequest, _serverResponse) {
         _serverResponse.setHeader("Access-Control-Allow-Origin", "*");
         _serverResponse.setHeader("content-type", "text/html; charset=utf-8");
@@ -57,7 +57,7 @@ var Aufgabe3_4_neu;
         let databaseResponseString = "Die Daten wurden erfolgreich gespeichert!";
         return databaseResponseString;
     }
-    //Funktion, um die Daten aus der Datenbank anzeigen zu lassen
+    //Funktion, um die Daten aus der Datenbank auf der Seite anzeigen zu lassen
     async function readDataFromDatabank(_requestedUrl) {
         let mongoDetails = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClientDetails = new Mongo.MongoClient(_requestedUrl, mongoDetails);
