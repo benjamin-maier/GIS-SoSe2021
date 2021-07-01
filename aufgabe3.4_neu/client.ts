@@ -6,7 +6,7 @@ namespace Aufgabe3_4_neu {
 
     //Eventlistener für die beiden Buttons
     document.getElementById("sendButton").addEventListener("click", sendEnteredData);
-    document.getElementById("sendButton").addEventListener("click", showSafedData);
+    document.getElementById("showButton").addEventListener("click", showSafedData);
     document.getElementById("deleteButton").addEventListener("click", deleteEnteredData);
 
 

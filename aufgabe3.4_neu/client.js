@@ -5,7 +5,7 @@ var Aufgabe3_4_neu;
     let url = "https://gissose-2021.herokuapp.com";
     //Eventlistener für die beiden Buttons
     document.getElementById("sendButton").addEventListener("click", sendEnteredData);
-    document.getElementById("sendButton").addEventListener("click", showSafedData);
+    document.getElementById("showButton").addEventListener("click", showSafedData);
     document.getElementById("deleteButton").addEventListener("click", deleteEnteredData);
     //Funktion sendEnteredData, um die eingegebenen Daten an die Datenbank zu schicken
     async function sendEnteredData() {
