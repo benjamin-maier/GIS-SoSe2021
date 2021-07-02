@@ -57,12 +57,12 @@ var Aufgabe3_4_neu;
             let deleteButton = document.createElement("button");
             deleteButton.innerHTML = "Löschen";
             emptyLine.appendChild(deleteButton);
-            deleteButton.addEventListener("click", deleteSafedData);
+            deleteButton.addEventListener("click", deleteEnteredData);
             //Funktion, um die gespeicherten Daten zu löschen
-            async function deleteSafedData() {
+            async function deleteEnteredData() {
                 setUrl();
                 console.log("Delete-Button wurde gedrückt.");
-                url += "/deleteSafedData";
+                url += "/deleteEnteredData";
                 url += "?lastname=" + textToForm[i].lastname + "&firstname=" + textToForm[i].firstname + "&number=" + textToForm[i].number + "&module=" + textToForm[i].module;
                 //url += "?number=" + textToForm[i].number;
                 let fetchResponse = await fetch(url);

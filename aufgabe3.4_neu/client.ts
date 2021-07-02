@@ -81,17 +81,17 @@ namespace Aufgabe3_4_neu {
             deleteButton.innerHTML = "Löschen";
             emptyLine.appendChild(deleteButton);
 
-            deleteButton.addEventListener("click", deleteSafedData);
+            deleteButton.addEventListener("click", deleteEnteredData);
 
 
             //Funktion, um die gespeicherten Daten zu löschen
-            async function deleteSafedData(): Promise<void> {
+            async function deleteEnteredData(): Promise<void> {
 
                 setUrl();
 
                 console.log("Delete-Button wurde gedrückt.");
                 
-                url += "/deleteSafedData";
+                url += "/deleteEnteredData";
         
                 url += "?lastname=" + textToForm[i].lastname + "&firstname=" + textToForm[i].firstname + "&number=" + textToForm[i].number + "&module=" + textToForm[i].module;
                 //url += "?number=" + textToForm[i].number;
