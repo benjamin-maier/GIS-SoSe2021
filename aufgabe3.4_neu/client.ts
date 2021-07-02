@@ -93,8 +93,8 @@ namespace Aufgabe3_4_neu {
                 
                 url += "/deleteSafedData";
         
-                //url += "?lastname=" + textToForm[i].lastname + "&firstname=" + textToForm[i].firstname + "&number=" + textToForm[i].number + "&module=" + textToForm[i].module;
-                url += "?number=" + textToForm[i].number;
+                url += "?lastname=" + textToForm[i].lastname + "&firstname=" + textToForm[i].firstname + "&number=" + textToForm[i].number + "&module=" + textToForm[i].module;
+                //url += "?number=" + textToForm[i].number;
         
                 let fetchResponse: Response = await fetch(url);
 

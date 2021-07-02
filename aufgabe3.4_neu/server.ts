@@ -43,8 +43,8 @@ async function handleUserRequest(_userRequest: Http.IncomingMessage, _serverResp
 
         newUrl = Url.parse(_userRequest.url, true);
 
-        //let formularData: formularData = {lastname: newUrl.query.lastname + "", firstname: newUrl.query.firstname + "", number: newUrl.query.number + "", module: newUrl.query.module + ""};
-        let formularData: Mongo.FilterQuery<any> = {"number": newUrl.query.number.toString()};
+        let formularData: formularData = {lastname: newUrl.query.lastname + "", firstname: newUrl.query.firstname + "", number: newUrl.query.number + "", module: newUrl.query.module + ""};
+        //let formularData: Mongo.FilterQuery<any> = {"lastname":"number": newUrl.query.number.toString();
         console.log("Matrikelnummer:" + newUrl.query.number);
         
         //Abfrage, ob sendEnteredData abgerufen wird
