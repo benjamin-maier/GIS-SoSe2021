@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <!--Die folgenden Zeile ist Fremd-Code und stammt von: https://www.w3schools.com/css/css_font_google.asp-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Darker+Grotesque"/>
+    <!--Ende Fremd-Code-->
+    <script src="../client/client.js" defer></script>
+    <title>Admin-Bereich</title>
+</head>
+
+<body id="html-admin">
+    <a href="index.html"><img id="home-button" src="../media/house.svg"
+        alt="Home-Button"></a>
+    <h1>Admin-Bereich</h1>
+    <h2>Für die Verwaltung der Karten-Bilder:</h2>
+    <p>Du kannst Bilder aus der Datenbank löschen, oder neue mit einem URL-Link hinzufügen.</p>
+    <p>Ein GIS-Meme für zwischendurch findest du <a is="memeLink" href="https://github.com/benjamin-maier/GIS-SoSe2021">hier</a>.</p>
+
+    <form id="addPicture">
+        <label for="pictureOrigin">URL:</label>
+        <br>
+        <input type="text" name="pictureOrigin" id="pictureOrigin">
+    </form>
+    <button>Bild hinzufügen</button>
+
+    <h2>Bilder:</h2>
+</body>
+
+</html>
