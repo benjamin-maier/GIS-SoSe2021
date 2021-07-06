@@ -36,6 +36,9 @@ p{
     color: wheat;
     font-size: 1.4em;
 }
+#h2Game{
+    margin-top: -3%;
+}
 #home-button{
     width: 50px;
     color: white;
@@ -86,7 +89,14 @@ button:hover{
 a{
     color: wheat;
 }
-
+.picture{
+    width: 150px;
+    margin-right: 5%;
+}
+.pictureTable{
+    margin-left: auto;
+    margin-right: auto;
+}
 /*Tablet*/@media screen and (max-width: 1024px) {
 h1{
     font-size: 4.5em;
@@ -155,6 +165,15 @@ button{
 #firstname{
     width: 70%;
     padding-top: 0.1%;
+}
+#h2Game{
+    margin-top: -10%;
+}
+.picture{
+    width: 80px;
+}
+.pictureTable{
+    margin-top: -5%;
 }
 @keyframes comeup{
     from{

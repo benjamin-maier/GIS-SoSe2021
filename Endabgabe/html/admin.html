@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Darker+Grotesque"/>
     <!--Ende Fremd-Code-->
     <script src="../client/client.js" defer></script>
-    <title>Admin-Bereich</title>
+    <title id="admin_html">Admin-Bereich</title>
 </head>
 
 <body id="html-admin">
@@ -27,9 +27,11 @@
         <br>
         <input type="text" name="pictureOrigin" id="pictureOrigin">
     </form>
-    <button>Bild hinzufügen</button>
+    <button id="sendButton">Bild hinzufügen</button><br>
+    <button id="showButton">Bilder anzeigen</button>
 
     <h2>Bilder:</h2>
+    <div id=dataOutput></div>
 </body>
 
 </html>
