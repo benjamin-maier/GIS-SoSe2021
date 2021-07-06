@@ -50,49 +50,50 @@ namespace Endabgabe {
 
             let responseData: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("dataOutput");
 
-        //Schleife für die Ausgabe der Daten
-        for (let i = 0; i < textToForm.length; i++) {
+            //Schleife für die Ausgabe der Daten
+            for (let i = 0; i < textToForm.length; i++) {
 
-            //Image-Element für die Anzeige
-            let pictureOriginData: HTMLImageElement = document.createElement("img");
-            let emptyLine: HTMLParagraphElement = document.createElement("p");
+                //Image-Element für die Anzeige
+                let pictureOriginData: HTMLImageElement = document.createElement("img");
+                let emptyLine: HTMLParagraphElement = document.createElement("p");
 
-            //innerHTML werden mit den Daten gefüllt
-            pictureOriginData.innerHTML = textToForm[i].pictureOrigin;
+                //innerHTML werden mit den Daten gefüllt
+                pictureOriginData.src = textToForm[i].pictureOrigin;
+                emptyLine.innerHTML = "";
 
-            //werden appended um gegliedert angezeigt zu werden
-            pictureOriginData.appendChild(pictureOriginData);
-            responseData.appendChild(emptyLine);
+                //werden appended um gegliedert angezeigt zu werden
+                responseData.appendChild(pictureOriginData);
+                responseData.appendChild(emptyLine);
 
-            //Button deklarieren und Eventlistener darauf installieren
-            let deleteButton: HTMLButtonElement = document.createElement("button");
-            deleteButton.innerHTML = "Löschen";
-            emptyLine.appendChild(deleteButton);
+                //Button deklarieren und Eventlistener darauf installieren
+                let deleteButton: HTMLButtonElement = document.createElement("button");
+                deleteButton.innerHTML = "Löschen";
+                emptyLine.appendChild(deleteButton);
 
-            deleteButton.addEventListener("click", deleteEnteredData);
+                deleteButton.addEventListener("click", deleteEnteredData);
 
 
-            //Funktion, um die gespeicherten Daten zu löschen
-            async function deleteEnteredData(): Promise<void> {
+                //Funktion, um die gespeicherten Daten zu löschen
+                async function deleteEnteredData(): Promise<void> {
 
-                setUrl();
+                    setUrl();
 
-                console.log("Delete-Button wurde gedrückt.");
+                    console.log("Delete-Button wurde gedrückt.");
 
-                url += "/deleteEnteredData";
+                    url += "/deleteEnteredData";
 
-                url += "?url=" + textToForm[i].pictureOrigin;
-                //url += "?number=" + textToForm[i].number;
+                    url += "?pictureOrigin=" + textToForm[i].pictureOrigin;
+                    //url += "?number=" + textToForm[i].number;
 
-                let fetchResponse: Response = await fetch(url);
+                    let fetchResponse: Response = await fetch(url);
 
-                let displayResponse: string = await fetchResponse.text();
+                    let displayResponse: string = await fetchResponse.text();
 
-                responseData.innerHTML = displayResponse;
+                    responseData.innerHTML = displayResponse;
 
-                console.log(urlExtra.toString());
+                    console.log(urlExtra.toString());
+                }
             }
-        }
         }
     }
 

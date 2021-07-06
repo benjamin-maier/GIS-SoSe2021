@@ -42,9 +42,10 @@ var Endabgabe;
                 let pictureOriginData = document.createElement("img");
                 let emptyLine = document.createElement("p");
                 //innerHTML werden mit den Daten gefüllt
-                pictureOriginData.innerHTML = textToForm[i].pictureOrigin;
+                pictureOriginData.src = textToForm[i].pictureOrigin;
+                emptyLine.innerHTML = "";
                 //werden appended um gegliedert angezeigt zu werden
-                pictureOriginData.appendChild(pictureOriginData);
+                responseData.appendChild(pictureOriginData);
                 responseData.appendChild(emptyLine);
                 //Button deklarieren und Eventlistener darauf installieren
                 let deleteButton = document.createElement("button");
@@ -56,7 +57,7 @@ var Endabgabe;
                     setUrl();
                     console.log("Delete-Button wurde gedrückt.");
                     url += "/deleteEnteredData";
-                    url += "?url=" + textToForm[i].pictureOrigin;
+                    url += "?pictureOrigin=" + textToForm[i].pictureOrigin;
                     //url += "?number=" + textToForm[i].number;
                     let fetchResponse = await fetch(url);
                     let displayResponse = await fetchResponse.text();

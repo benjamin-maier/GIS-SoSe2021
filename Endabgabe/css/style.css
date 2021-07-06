@@ -97,6 +97,9 @@ a{
     margin-left: auto;
     margin-right: auto;
 }
+#dataOutput{
+    height: 100px;
+}
 /*Tablet*/@media screen and (max-width: 1024px) {
 h1{
     font-size: 4.5em;
