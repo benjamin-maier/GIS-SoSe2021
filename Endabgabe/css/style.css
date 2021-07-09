@@ -91,14 +91,26 @@ a{
 }
 .picture{
     width: 150px;
+    height: 150px;
     margin-right: 5%;
+    object-fit: cover;
 }
 .pictureTable{
     margin-left: auto;
     margin-right: auto;
 }
+.adminImages{
+    width: 250px;
+    height: 250px;
+    /*Die folgende Zeile ist Fremd-Code und stammt von: https://www.w3schools.com/css/css3_object-fit.asp*/
+    object-fit: cover;
+    /*Ende Fremd-Code*/
+}
 #dataOutput{
     height: 100px;
+}
+.hideImage{
+    display: none;
 }
 /*Tablet*/@media screen and (max-width: 1024px) {
 h1{

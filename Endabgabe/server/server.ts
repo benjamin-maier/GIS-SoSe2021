@@ -44,6 +44,8 @@ async function handleUserRequest(_userRequest: Http.IncomingMessage, _serverResp
         newUrl = Url.parse(_userRequest.url, true);
 
         let pictureFormularData: pictureFormularData = {pictureOrigin: newUrl.query.pictureOrigin + ""};
+        let playerFormularData: PlayerData = {firstname: newUrl.query.firstname + "", lastname: newUrl.query.lastname + "", time: newUrl.query.time + ""};
+
         //let formularData: Mongo.FilterQuery<any> = {"lastname":"number": newUrl.query.number.toString();
         
         //Abfrage, ob sendEnteredData abgerufen wird
@@ -68,6 +70,22 @@ async function handleUserRequest(_userRequest: Http.IncomingMessage, _serverResp
             console.log("showSafedData wird ausgeführt");
             let serverResponseArray: pictureFormularData[] = await readDataFromDatabank(urlDatabank);
             _serverResponse.write(JSON.stringify(serverResponseArray));
+        }
+
+        //Abfrage, ob getImages abgerufen wird
+        if (newUrl.pathname == "/getImages") {
+
+            console.log("getImages wird ausgeführt");
+            let databankImages: pictureFormularData[] = await getImages(urlDatabank);
+            _serverResponse.write(JSON.stringify(databankImages));
+        }
+
+        //Abfrage, ob sendPlayerData abgerufen wird
+        if (newUrl.pathname == "/sendPlayerData") {
+
+            console.log("sendPlayerData wird ausgeführt");
+            let enteredData: string = await sendPlayerData (urlDatabank, playerFormularData);
+            _serverResponse.write(enteredData);
         }
     }
     _serverResponse.end();
@@ -114,6 +132,33 @@ async function deleteEnteredData(_requestedUrl:string, _pictureFormularData: Mon
     collectionDetails.deleteOne(_pictureFormularData);
 
     let databaseResponseString: string = "Die Daten wurden erfolgreich entfernt!";
+    return databaseResponseString;
+}
+
+//Funktion, um die Bilder aus der Datenbank zu holen
+async function getImages(_requestedUrl: string): Promise <pictureFormularData[]> {
+    
+    let mongoDetails: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+    let mongoClientDetails: Mongo.MongoClient = new Mongo.MongoClient(_requestedUrl, mongoDetails);
+    await mongoClientDetails.connect();
+    
+    let collectionDetails: Mongo.Collection = mongoClientDetails.db("Memory_Game").collection("memoryPictures");
+    let databaseCursor: Mongo.Cursor = collectionDetails.find();
+    let databaseImageSerachResult: pictureFormularData[] = await databaseCursor.toArray();
+    return databaseImageSerachResult;
+}
+
+//Funktion, um die Spieler-Daten in der Datenbank zu speichern
+async function sendPlayerData(_requestedUrl:string, _PlayerData: Mongo.FilterQuery<any>): Promise<string> {
+    
+    let mongoDetails: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+    let mongoClientDetails: Mongo.MongoClient = new Mongo.MongoClient(_requestedUrl, mongoDetails);
+    await mongoClientDetails.connect();
+
+    let collectionDetails: Mongo.Collection = mongoClientDetails.db("Memory_Game").collection("playerData");
+    collectionDetails.insertOne(_PlayerData);
+
+    let databaseResponseString: string = "Die Daten wurden erfolgreich gespeichert!";
     return databaseResponseString;
 }
 }

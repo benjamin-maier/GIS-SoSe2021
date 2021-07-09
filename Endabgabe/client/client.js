@@ -1,14 +1,14 @@
 "use strict";
 var Endabgabe;
 (function (Endabgabe) {
+    //Url für die Server-Verbindung
+    let url;
+    function setUrl() {
+        url = "https://gissose-2021.herokuapp.com";
+        //url = "http://localhost:8100";
+    }
     //Code für die Admin-Seite (aus Abgabe3.4_neu)
     if ((document.querySelector("title").getAttribute("id") == "admin_html")) {
-        //Url für die Server-Verbindung
-        let url;
-        function setUrl() {
-            //url = "https://gissose-2021.herokuapp.com";
-            url = "http://localhost:8100";
-        }
         //Eventlistener für den Button
         document.getElementById("sendButton").addEventListener("click", sendEnteredData);
         document.getElementById("showButton").addEventListener("click", showSafedData);
@@ -43,6 +43,7 @@ var Endabgabe;
                 let emptyLine = document.createElement("p");
                 //innerHTML werden mit den Daten gefüllt
                 pictureOriginData.src = textToForm[i].pictureOrigin;
+                pictureOriginData.className = "adminImages";
                 emptyLine.innerHTML = "";
                 //werden appended um gegliedert angezeigt zu werden
                 responseData.appendChild(pictureOriginData);
@@ -64,6 +65,23 @@ var Endabgabe;
                     responseData.innerHTML = displayResponse;
                     console.log(urlExtra.toString());
                 }
+            }
+        }
+        //Code für die Registrierungs-Seite
+        if ((document.querySelector("title").getAttribute("id") == "registration-html")) {
+            document.getElementById("safePlayerButton").addEventListener("click", sendPlayerData);
+            //Funktion, um die eingegebenen Daten an die Datnebnak zu übermitteln
+            async function sendPlayerData() {
+                setUrl();
+                let enteredData = new FormData(document.forms[0]);
+                url += "/sendPlayerData";
+                let urlExtra = new URLSearchParams(enteredData);
+                url += "?" + urlExtra.toString();
+                await fetch(url);
+                console.log("Daten wurden erfasst.");
+                //Formular-Einträge wieder zurücksetzen
+                let resetVariable = document.getElementById("registrationForm");
+                resetVariable.reset();
             }
         }
     }
