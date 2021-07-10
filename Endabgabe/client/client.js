@@ -63,7 +63,6 @@ var Endabgabe;
                     console.log("Delete-Button wurde gedrückt.");
                     url += "/deleteEnteredData";
                     url += "?pictureOrigin=" + textToForm[i].pictureOrigin;
-                    //url += "?number=" + textToForm[i].number;
                     let fetchResponse = await fetch(url);
                     let displayResponse = await fetchResponse.text();
                     responseData.innerHTML = displayResponse;

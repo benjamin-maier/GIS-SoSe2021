@@ -127,7 +127,9 @@ var Endabgabe;
         let mongoClientDetails = new Mongo.MongoClient(_requestedUrl, mongoDetails);
         await mongoClientDetails.connect();
         let collectionDetails = mongoClientDetails.db("Memory_Game").collection("playerData");
-        let databaseCursor = collectionDetails.find();
+        //Sort-Funktion stammt von: https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
+        let databaseCursor = collectionDetails.aggregate([{ $sort: { time: 1 } }]);
+        //Ende Fremd-Code
         let databaseSerachResult = await databaseCursor.toArray();
         return databaseSerachResult;
     }

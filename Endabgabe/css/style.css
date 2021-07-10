@@ -106,9 +106,6 @@ a{
 .setOpacityUp{
     opacity: 100%;
 }
-.hiddenFormulare{
-    display: none;
-}
 /*Tablet*/@media screen and (max-width: 1024px) {
 h1{
     font-size: 4.5em;

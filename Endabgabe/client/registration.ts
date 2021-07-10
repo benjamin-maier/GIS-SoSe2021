@@ -7,8 +7,6 @@ namespace Endabgabe {
         url = "http://localhost:8100";
     }
 
-    document.getElementById("time").innerHTML = localStorage.getItem("playedTime");
-
     document.getElementById("skipToScoreButton").addEventListener("click", skipToScore);
     document.getElementById("safePlayerButton").addEventListener("click", sendPlayerData);
 
@@ -27,7 +25,9 @@ namespace Endabgabe {
         url += "/sendPlayerData";
 
         let urlExtra: URLSearchParams = new URLSearchParams(<any>enteredData);
-        url += "?" + urlExtra.toString();
+        url += "?" + urlExtra.toString() + "&time=" + localStorage.getItem("playedTime");
+        console.log(urlExtra.toString());
+        
 
         await fetch(url);
         console.log("Daten wurden erfasst.");
@@ -36,6 +36,6 @@ namespace Endabgabe {
         let resetVariable: HTMLFormElement = <HTMLFormElement>document.getElementById("registrationForm");
         resetVariable.reset();
 
-        window.location.href = "../html/score.html";
+        //window.location.href = "../html/score.html";
     }
 }

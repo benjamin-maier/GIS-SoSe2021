@@ -178,7 +178,11 @@ async function readPlayerData(_requestedUrl: string): Promise <PlayerData[]> {
     await mongoClientDetails.connect();
     
     let collectionDetails: Mongo.Collection = mongoClientDetails.db("Memory_Game").collection("playerData");
-    let databaseCursor: Mongo.Cursor = collectionDetails.find();
+
+    //Sort-Funktion stammt von: https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
+    let databaseCursor: Mongo.Cursor = collectionDetails.aggregate([{$sort:{time:1}}]);
+    //Ende Fremd-Code
+
     let databaseSerachResult: PlayerData[] = await databaseCursor.toArray();
     return databaseSerachResult;
 }

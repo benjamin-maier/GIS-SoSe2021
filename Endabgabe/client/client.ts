@@ -91,7 +91,6 @@ namespace Endabgabe {
                     url += "/deleteEnteredData";
 
                     url += "?pictureOrigin=" + textToForm[i].pictureOrigin;
-                    //url += "?number=" + textToForm[i].number;
 
                     let fetchResponse: Response = await fetch(url);
 

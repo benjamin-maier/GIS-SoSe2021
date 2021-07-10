@@ -62,12 +62,12 @@ namespace Endabgabe {
 
         let responseData: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("highscoreOutput");
 
-        sortPlayerArray(textToForm);
+        //sortPlayerArray(textToForm);
         console.log(textToForm);
 
 
         //Funktion, um das Array zu sortieren
-        function sortPlayerArray(_arrayToSort: PlayerData[]): PlayerData[] {
+        /*function sortPlayerArray(_arrayToSort: PlayerData[]): PlayerData[] {
 
             //Zwischenspeicher für die Sortierung
             let playerHelpVariable: PlayerData;
@@ -76,23 +76,23 @@ namespace Endabgabe {
 
                 if (textToForm.length > 1) {
                     if (textToForm[t].time > textToForm[t + 1].time) {
-                        textToForm[t] = playerHelpVariable;
+                        playerHelpVariable = textToForm[t];
                         textToForm[t + 1] = textToForm[t];
                         playerHelpVariable = textToForm[t + 1];
                     }
                 }
             }
             return textToForm;
-        }
+        }*/
 
 
         //Schleife für die Ausgabe der Daten
         for (let i = 1; i < 11; i++) {
 
             //Paragraph-Elemente, für die Anzeige
-            let firstnameData: HTMLParagraphElement = document.createElement("p");
-            let lastnameData: HTMLParagraphElement = document.createElement("p");
-            let timeData: HTMLParagraphElement = document.createElement("p");
+            let firstnameData: HTMLParagraphElement = document.createElement("h3");
+            let lastnameData: HTMLParagraphElement = document.createElement("h3");
+            let timeData: HTMLParagraphElement = document.createElement("h3");
             let emptyLine: HTMLParagraphElement = document.createElement("p");
 
             //innerHTML werden mit den Daten gefüllt

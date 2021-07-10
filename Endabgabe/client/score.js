@@ -45,29 +45,32 @@ var Endabgabe;
         let databankData = await returnedData.text();
         let textToForm = JSON.parse(databankData);
         let responseData = document.getElementById("highscoreOutput");
-        sortPlayerArray(textToForm);
+        //sortPlayerArray(textToForm);
         console.log(textToForm);
         //Funktion, um das Array zu sortieren
-        function sortPlayerArray(_arrayToSort) {
+        /*function sortPlayerArray(_arrayToSort: PlayerData[]): PlayerData[] {
+
             //Zwischenspeicher für die Sortierung
-            let playerHelpVariable;
+            let playerHelpVariable: PlayerData;
+
             for (let t = 0; t < textToForm.length; t++) {
+
                 if (textToForm.length > 1) {
                     if (textToForm[t].time > textToForm[t + 1].time) {
-                        textToForm[t] = playerHelpVariable;
+                        playerHelpVariable = textToForm[t];
                         textToForm[t + 1] = textToForm[t];
                         playerHelpVariable = textToForm[t + 1];
                     }
                 }
             }
             return textToForm;
-        }
+        }*/
         //Schleife für die Ausgabe der Daten
         for (let i = 1; i < 11; i++) {
             //Paragraph-Elemente, für die Anzeige
-            let firstnameData = document.createElement("p");
-            let lastnameData = document.createElement("p");
-            let timeData = document.createElement("p");
+            let firstnameData = document.createElement("h3");
+            let lastnameData = document.createElement("h3");
+            let timeData = document.createElement("h3");
             let emptyLine = document.createElement("p");
             //innerHTML werden mit den Daten gefüllt
             firstnameData.innerHTML = i.toString() + "." + textToForm[i].firstname;
