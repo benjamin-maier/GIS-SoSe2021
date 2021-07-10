@@ -7,6 +7,12 @@ namespace Endabgabe {
         url = "http://localhost:8100";
     }
 
+    document.getElementById("home-button").addEventListener("click", goToHome);
+
+    function goToHome(): void {
+        window.location.href = "../html/index.html";
+    }
+
     //Code für die Admin-Seite (aus Abgabe3.4_neu)
     if ((document.querySelector("title").getAttribute("id") == "admin_html")) {
 
@@ -97,34 +103,5 @@ namespace Endabgabe {
                 }
             }
         }
-
-
-        //Code für die Registrierungs-Seite
-        if ((document.querySelector("title").getAttribute("id") == "registration-html")) {
-
-            document.getElementById("safePlayerButton").addEventListener("click", sendPlayerData);
-
-            //Funktion, um die eingegebenen Daten an die Datnebnak zu übermitteln
-            async function sendPlayerData(): Promise<void> {
-
-                setUrl();
-
-                let enteredData: FormData = new FormData(document.forms[0]);
-                url += "/sendPlayerData";
-
-                let urlExtra: URLSearchParams = new URLSearchParams(<any>enteredData);
-                url += "?" + urlExtra.toString();
-
-                await fetch(url);
-                console.log("Daten wurden erfasst.");
-
-                //Formular-Einträge wieder zurücksetzen
-                let resetVariable: HTMLFormElement = <HTMLFormElement>document.getElementById("registrationForm");
-                resetVariable.reset();
-            }
-
-        }
-
-
     }
 }

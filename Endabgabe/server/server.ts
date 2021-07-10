@@ -139,7 +139,7 @@ async function deleteEnteredData(_requestedUrl:string, _pictureFormularData: Mon
     let collectionDetails: Mongo.Collection = mongoClientDetails.db("Memory_Game").collection("memoryPictures");
     collectionDetails.deleteOne(_pictureFormularData);
 
-    let databaseResponseString: string = "Die Daten wurden erfolgreich entfernt!";
+    let databaseResponseString: string = "";
     return databaseResponseString;
 }
 

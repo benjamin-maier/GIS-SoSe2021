@@ -7,15 +7,32 @@ var Endabgabe;
         //url = "https://gissose-2021.herokuapp.com";
         url = "http://localhost:8100";
     }
-    console.log("Scoreseite wird angezeigt");
+    document.getElementById("home-button").addEventListener("click", goToHome);
+    function goToHome() {
+        window.location.href = "../html/index.html";
+    }
     window.addEventListener("load", showPlayerData);
     window.addEventListener("load", showPlayerTime);
+    document.getElementById("playAgainButton").addEventListener("click", playAgain);
+    function playAgain() {
+        window.location.href = "../html/game.html";
+    }
     //Funktion um die benötigte Zeit anzuzeigen
     function showPlayerTime() {
         let timeDisplaying = document.getElementById("displayPlayerTime");
-        let usedTimeData = document.createElement("p");
-        usedTimeData.innerHTML = localStorage.getItem("playedTime");
+        let usedTimeData = document.createElement("h3");
+        usedTimeData.innerHTML = calculatePlayTime(parseFloat(localStorage.getItem("playedTime")));
         timeDisplaying.appendChild(usedTimeData);
+    }
+    //Funktion, um die Zeit ordentlich umzurechnen
+    function calculatePlayTime(_timeInMiliseconds) {
+        let extraMiliseconds = (_timeInMiliseconds % 1000);
+        let miliseconds = (_timeInMiliseconds - extraMiliseconds);
+        let seconds = (miliseconds / 1000);
+        let extraSeconds = (seconds % 60);
+        let minutes = ((seconds - extraSeconds) / 60);
+        let timeString = minutes.toString() + "min" + " " + extraSeconds.toString() + "sec";
+        return timeString;
     }
     //Funktion, um die gespeicherten Spielerdaten anzuzeigen
     async function showPlayerData() {
@@ -34,11 +51,13 @@ var Endabgabe;
         function sortPlayerArray(_arrayToSort) {
             //Zwischenspeicher für die Sortierung
             let playerHelpVariable;
-            for (let index = 0; index < textToForm.length; index++) {
-                if (textToForm[index].time > textToForm[index + 1].time) {
-                    textToForm[index] = playerHelpVariable;
-                    textToForm[index + 1] = textToForm[index];
-                    playerHelpVariable = textToForm[index + 1];
+            for (let t = 0; t < textToForm.length; t++) {
+                if (textToForm.length > 1) {
+                    if (textToForm[t].time > textToForm[t + 1].time) {
+                        textToForm[t] = playerHelpVariable;
+                        textToForm[t + 1] = textToForm[t];
+                        playerHelpVariable = textToForm[t + 1];
+                    }
                 }
             }
             return textToForm;
@@ -51,9 +70,9 @@ var Endabgabe;
             let timeData = document.createElement("p");
             let emptyLine = document.createElement("p");
             //innerHTML werden mit den Daten gefüllt
-            firstnameData.innerHTML = i + "." + textToForm[i].firstname;
+            firstnameData.innerHTML = i.toString() + "." + textToForm[i].firstname;
             lastnameData.innerHTML = textToForm[i].lastname;
-            timeData.innerHTML = textToForm[i].time.toString();
+            timeData.innerHTML = calculatePlayTime(textToForm[i].time);
             //werden appended um gegliedert angezeigt zu werden
             responseData.appendChild(firstnameData);
             responseData.appendChild(lastnameData);

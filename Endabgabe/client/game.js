@@ -7,17 +7,21 @@ var Endabgabe;
         //url = "https://gissose-2021.herokuapp.com";
         url = "http://localhost:8100";
     }
-    console.log("Spielseite wird angezeigt");
+    document.getElementById("home-button").addEventListener("click", goToHome);
+    function goToHome() {
+        window.location.href = "../html/index.html";
+    }
     window.addEventListener("load", getRandomImages);
-    //window.addEventListener("load", placeCards);
-    //window.addEventListener("load", startTimer);
     localStorage.clear();
-    //getRandomImages();
-    //placeCards();
-    //startTimer();
     //Deklarationen für das Kartenspiel
     let rightCards = 0;
-    //let rightCardArray: pictureFormularData[] = [];
+    let startTime;
+    //Startzeit wird genommen
+    //Inspiriert von: https://www.javatpoint.com/typescript-date-object
+    function startTimer() {
+        startTime = new Date();
+        return startTime;
+    }
     //Funktion, um die Bilder aus der DB zu holen und zufällig im Array zu speichern
     let randomImageArray = new Array;
     async function getRandomImages() {
@@ -28,7 +32,6 @@ var Endabgabe;
         url += "?" + urlExtra.toString();
         let returnedData = await fetch(url);
         let imageArrayDatabank = await returnedData.json();
-        console.log(imageArrayDatabank);
         //Random Karten aus dem Array suchen und in neues Array speichern
         while (randomImageArray.length < 15) {
             let playCard1 = { pictureOrigin: "" };
@@ -75,7 +78,6 @@ var Endabgabe;
         //Jetzt besteht das randomImageArray aus 8 zufälligen Paaren (16 Karten)
         placeCards();
     }
-    console.log(randomImageArray);
     //Funktion, um die Bilder auf die 16 Tabellenplätze zu verteilen
     function placeCards() {
         startTimer();
@@ -88,12 +90,9 @@ var Endabgabe;
             gameImage.classList.add("hideImage");
             gameImage.classList.add("picture");
             tablePlace.appendChild(gameImage);
-            //console.log(gameImage.src);
-            //tablePlace.firstElementChild.addEventListener("click", openCard);
             tablePlace.firstElementChild.addEventListener("click", openCard);
             //Funktion, um ein Bild aufzudecken
             function openCard() {
-                tablePlace.firstElementChild.addEventListener("click", openCard);
                 clickedCardCounter++;
                 gameImage.classList.remove("hideImage");
                 tablePlace.firstElementChild.classList.add("hideImage");
@@ -101,12 +100,9 @@ var Endabgabe;
                     clickedCard1 = tablePlace.lastElementChild;
                 }
                 if (clickedCardCounter == 2) {
-                    tablePlace.firstElementChild.removeEventListener("click", openCard);
                     if (clickedCard1.src == gameImage.src) {
-                        //setTimeout(removeCards, 2000);
                         rightCards = rightCards + 2;
-                        gameImage.classList.add("setOpacityDown");
-                        clickedCard1.classList.add("setOpacityDown");
+                        setTimeout(removeCards, 1000);
                     }
                     else {
                         //Die folgende Funktion ist Fremd-Code und stammt von: https://www.a-coding-project.de/ratgeber/javascript/delay
@@ -114,15 +110,17 @@ var Endabgabe;
                         //Ende Fremd-Code
                     }
                     clickedCardCounter = 0;
-                    console.log("Richtige Karten:" + rightCards);
+                }
+                if (rightCards == 16) {
+                    window.location.href = "../html/registration.html";
+                    endGame(startTime);
                 }
             }
             //Funktion um die Karten verschwinden zu lassen
-            /*function removeCards(): void {
-                rightCards = rightCards + 2;
+            function removeCards() {
                 gameImage.classList.add("setOpacityDown");
                 clickedCard1.classList.add("setOpacityDown");
-            }*/
+            }
             //Funktion, um ein Bild zuzudecken
             function closeCard() {
                 gameImage.classList.add("hideImage");
@@ -134,25 +132,14 @@ var Endabgabe;
             }
         }
     }
-    //Startzeit wird genommen
-    //Inspiriert von: https://www.javatpoint.com/typescript-date-object
-    function startTimer() {
-        let startTime = new Date();
-        //Funktion um das Spiel zu beenden, auf die Score-Seite weiterzuleiten und die Zeit zu nehmen
-        if (rightCards == 16) {
-            endGame(startTime);
-            window.location.href = "../html/registration.html";
-        }
-        return startTime;
-    }
     //Funktion, um das Spiel zu beenden
     //Inspiriert von: https://www.javatpoint.com/typescript-date-object
     function endGame(_startTime) {
         let endTime = new Date();
         let playTime = endTime.getTime() - _startTime.getTime();
         localStorage.setItem("playedTime", playTime.toString());
+        console.log("Zeit ist:" + localStorage.getItem("playedTime"));
         rightCards = 0;
-        //window.location.href = "../html/registration.html";
     }
 })(Endabgabe || (Endabgabe = {}));
 //# sourceMappingURL=game.js.map

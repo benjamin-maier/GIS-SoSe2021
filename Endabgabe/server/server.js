@@ -98,7 +98,7 @@ var Endabgabe;
         await mongoClientDetails.connect();
         let collectionDetails = mongoClientDetails.db("Memory_Game").collection("memoryPictures");
         collectionDetails.deleteOne(_pictureFormularData);
-        let databaseResponseString = "Die Daten wurden erfolgreich entfernt!";
+        let databaseResponseString = "";
         return databaseResponseString;
     }
     //Funktion, um die Bilder aus der Datenbank zu holen

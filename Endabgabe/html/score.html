@@ -6,21 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
+
     <!--Die folgenden Zeile ist Fremd-Code und stammt von: https://www.w3schools.com/css/css_font_google.asp-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Darker+Grotesque"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Darker+Grotesque" />
     <!--Ende Fremd-Code-->
+
     <script src="../client/score.js" defer></script>
     <title id="score-html">Score</title>
 </head>
 
 <body id="html-score">
-    <a href="index.html"><img id="home-button" src="../media/house.svg"
-        alt="Home-Button"></a>
+    <img id="home-button" src="../media/house.svg" alt="Home-Button">
+
     <h1>Du hast es geschafft!</h1>
-    <h2>Deine Zeit ist:</h2><h2 id="displayPlayerTime"></h2>
+    <h2>Deine Zeit ist:</h2>
+
+    <h2 id="displayPlayerTime"></h2>
+
     <p>Das war super, aber geht sicherlich noch besser. Versuche es doch noch einmal!</p>
-    <a href="game.html"><button>Erneut spielen</button></a>
+    <button id="playAgainButton">Erneut spielen</button>
 
     <h2>Rangliste:</h2>
     <div id="highscoreOutput"></div>

@@ -6,20 +6,43 @@ namespace Endabgabe {
         url = "http://localhost:8100";
     }
 
-    console.log("Scoreseite wird angezeigt");
+    document.getElementById("home-button").addEventListener("click", goToHome);
+
+    function goToHome(): void {
+        window.location.href = "../html/index.html";
+    }
 
     window.addEventListener("load", showPlayerData);
     window.addEventListener("load", showPlayerTime);
+    document.getElementById("playAgainButton").addEventListener("click", playAgain);
+
+    function playAgain(): void {
+        window.location.href = "../html/game.html";
+    }
 
     //Funktion um die benötigte Zeit anzuzeigen
-    function showPlayerTime(): void{
+    function showPlayerTime(): void {
 
         let timeDisplaying: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("displayPlayerTime");
-        let usedTimeData: HTMLParagraphElement = document.createElement("p");
+        let usedTimeData: HTMLParagraphElement = document.createElement("h3");
 
-        usedTimeData.innerHTML = localStorage.getItem("playedTime");
+        usedTimeData.innerHTML = calculatePlayTime(parseFloat(localStorage.getItem("playedTime")));
         timeDisplaying.appendChild(usedTimeData);
     }
+
+    //Funktion, um die Zeit ordentlich umzurechnen
+    function calculatePlayTime(_timeInMiliseconds: number): string {
+        let extraMiliseconds: number = (_timeInMiliseconds % 1000);
+        let miliseconds: number = (_timeInMiliseconds - extraMiliseconds);
+        let seconds: number = (miliseconds / 1000);
+        let extraSeconds: number = (seconds % 60);
+        let minutes: number = ((seconds - extraSeconds) / 60);
+
+        let timeString: string = minutes.toString() + "min" + " " + extraSeconds.toString() + "sec";
+
+        return timeString;
+    }
+
 
     //Funktion, um die gespeicherten Spielerdaten anzuzeigen
     async function showPlayerData(): Promise<void> {
@@ -49,12 +72,14 @@ namespace Endabgabe {
             //Zwischenspeicher für die Sortierung
             let playerHelpVariable: PlayerData;
 
-            for (let index = 0; index < textToForm.length; index++) {
+            for (let t = 0; t < textToForm.length; t++) {
 
-                if (textToForm[index].time > textToForm[index + 1].time) {
-                    textToForm[index] = playerHelpVariable;
-                    textToForm[index + 1] = textToForm[index];
-                    playerHelpVariable = textToForm[index + 1];
+                if (textToForm.length > 1) {
+                    if (textToForm[t].time > textToForm[t + 1].time) {
+                        textToForm[t] = playerHelpVariable;
+                        textToForm[t + 1] = textToForm[t];
+                        playerHelpVariable = textToForm[t + 1];
+                    }
                 }
             }
             return textToForm;
@@ -71,9 +96,9 @@ namespace Endabgabe {
             let emptyLine: HTMLParagraphElement = document.createElement("p");
 
             //innerHTML werden mit den Daten gefüllt
-            firstnameData.innerHTML = i + "." + textToForm[i].firstname;
+            firstnameData.innerHTML = i.toString() + "." + textToForm[i].firstname;
             lastnameData.innerHTML = textToForm[i].lastname;
-            timeData.innerHTML = textToForm[i].time.toString();
+            timeData.innerHTML = calculatePlayTime(textToForm[i].time);
 
             //werden appended um gegliedert angezeigt zu werden
             responseData.appendChild(firstnameData);
