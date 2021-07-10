@@ -21,7 +21,24 @@ var Endabgabe;
     function showPlayerTime() {
         let timeDisplaying = document.getElementById("displayPlayerTime");
         let usedTimeData = document.createElement("h3");
-        usedTimeData.innerHTML = calculatePlayTime(parseFloat(localStorage.getItem("playedTime")));
+        //Um Texte nicht anzuzeigen, wenn nicht gespielt wurde
+        if (localStorage.getItem("playedTime") == undefined) {
+            usedTimeData.innerHTML = "Keine Daten vorhanden!";
+            document.getElementById("h1ScorePage").classList.add("hideImage");
+            document.getElementById("h2ScorePage").classList.add("hideImage");
+            document.getElementById("displayPlayerTime").classList.add("hideImage");
+            document.getElementById("paragraphScorePage").classList.add("setOpacityDown");
+            document.getElementById("playAgainButton").innerHTML = "Spiel spielen";
+        }
+        //Um Texte anzuzeigen, wenn der Spiekler gerade von der Game-Seite kommt und Daten vorhanden sind
+        else {
+            usedTimeData.innerHTML = calculatePlayTime(parseFloat(localStorage.getItem("playedTime")));
+            document.getElementById("h1ScorePage").classList.remove("hideImage");
+            document.getElementById("h2ScorePage").classList.remove("hideImage");
+            document.getElementById("displayPlayerTime").classList.remove("hideImage");
+            document.getElementById("paragraphScorePage").classList.add("setOpacityUp");
+            document.getElementById("playAgainButton").innerHTML = "Erneut spielen";
+        }
         timeDisplaying.appendChild(usedTimeData);
     }
     //Funktion, um die Zeit ordentlich umzurechnen
@@ -45,37 +62,18 @@ var Endabgabe;
         let databankData = await returnedData.text();
         let textToForm = JSON.parse(databankData);
         let responseData = document.getElementById("highscoreOutput");
-        //sortPlayerArray(textToForm);
-        console.log(textToForm);
-        //Funktion, um das Array zu sortieren
-        /*function sortPlayerArray(_arrayToSort: PlayerData[]): PlayerData[] {
-
-            //Zwischenspeicher für die Sortierung
-            let playerHelpVariable: PlayerData;
-
-            for (let t = 0; t < textToForm.length; t++) {
-
-                if (textToForm.length > 1) {
-                    if (textToForm[t].time > textToForm[t + 1].time) {
-                        playerHelpVariable = textToForm[t];
-                        textToForm[t + 1] = textToForm[t];
-                        playerHelpVariable = textToForm[t + 1];
-                    }
-                }
-            }
-            return textToForm;
-        }*/
         //Schleife für die Ausgabe der Daten
-        for (let i = 1; i < 11; i++) {
+        for (let k = 0; k < 10; k++) {
             //Paragraph-Elemente, für die Anzeige
             let firstnameData = document.createElement("h3");
             let lastnameData = document.createElement("h3");
             let timeData = document.createElement("h3");
             let emptyLine = document.createElement("p");
             //innerHTML werden mit den Daten gefüllt
-            firstnameData.innerHTML = i.toString() + "." + textToForm[i].firstname;
-            lastnameData.innerHTML = textToForm[i].lastname;
-            timeData.innerHTML = calculatePlayTime(textToForm[i].time);
+            firstnameData.innerHTML = (k + 1).toString() + "." + textToForm[k].firstname;
+            lastnameData.innerHTML = textToForm[k].lastname;
+            timeData.innerHTML = calculatePlayTime(textToForm[k].time);
+            emptyLine.innerHTML = "-------------";
             //werden appended um gegliedert angezeigt zu werden
             responseData.appendChild(firstnameData);
             responseData.appendChild(lastnameData);

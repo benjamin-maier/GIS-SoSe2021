@@ -26,7 +26,7 @@ var Endabgabe;
         //Formular-Einträge wieder zurücksetzen
         let resetVariable = document.getElementById("registrationForm");
         resetVariable.reset();
-        //window.location.href = "../html/score.html";
+        window.location.href = "../html/score.html";
     }
 })(Endabgabe || (Endabgabe = {}));
 //# sourceMappingURL=registration.js.map

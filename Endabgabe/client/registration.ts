@@ -36,6 +36,6 @@ namespace Endabgabe {
         let resetVariable: HTMLFormElement = <HTMLFormElement>document.getElementById("registrationForm");
         resetVariable.reset();
 
-        //window.location.href = "../html/score.html";
+        window.location.href = "../html/score.html";
     }
 }

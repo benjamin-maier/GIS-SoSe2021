@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Darker+Grotesque" />
     <!--Ende Fremd-Code-->
+    <!-- Die folgenden Zeilen sind Fremdcode und stammen wie die favicon-Dateien selbst von: https://favicon.io/favicon-converter/-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../media/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../media/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../media/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../media/favicon_io/site.webmanifest">
+    <!-- Ende Fremd-Code-->
 
     <script src="../client/score.js" defer></script>
     <title id="score-html">Score</title>
@@ -19,12 +25,12 @@
 <body id="html-score">
     <img id="home-button" src="../media/house.svg" alt="Home-Button">
 
-    <h1>Du hast es geschafft!</h1>
-    <h2>Deine Zeit ist:</h2>
+    <h1 id="h1ScorePage">Du hast es geschafft!</h1>
+    <h2 id="h2ScorePage">Deine Zeit ist:</h2>
 
     <h2 id="displayPlayerTime"></h2>
 
-    <p>Das war super, aber geht sicherlich noch besser. Versuche es doch noch einmal!</p>
+    <p id="paragraphScorePage">Das war super, aber geht sicherlich noch besser. Versuche es doch noch einmal!</p>
     <button id="playAgainButton">Erneut spielen</button>
 
     <h1>Rangliste:</h1>

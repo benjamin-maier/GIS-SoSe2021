@@ -1,5 +1,7 @@
 namespace Endabgabe{
 
+    localStorage.clear();
+    
     document.getElementById("playTheGameButton").addEventListener("click", playTheGame);
     document.getElementById("goToScoresButton").addEventListener("click", showTheScores);
     document.getElementById("goToAdminButton").addEventListener("click", goToAdmin);

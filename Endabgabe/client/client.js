@@ -7,6 +7,7 @@ var Endabgabe;
         //url = "https://gissose-2021.herokuapp.com";
         url = "http://localhost:8100";
     }
+    localStorage.clear();
     document.getElementById("home-button").addEventListener("click", goToHome);
     function goToHome() {
         window.location.href = "../html/index.html";

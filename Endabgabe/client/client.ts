@@ -7,6 +7,8 @@ namespace Endabgabe {
         url = "http://localhost:8100";
     }
 
+    localStorage.clear();
+
     document.getElementById("home-button").addEventListener("click", goToHome);
 
     function goToHome(): void {
