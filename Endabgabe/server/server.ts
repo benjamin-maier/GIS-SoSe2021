@@ -44,7 +44,7 @@ async function handleUserRequest(_userRequest: Http.IncomingMessage, _serverResp
         newUrl = Url.parse(_userRequest.url, true);
 
         let pictureFormularData: pictureFormularData = {pictureOrigin: newUrl.query.pictureOrigin + ""};
-        let playerFormularData: PlayerData = {firstname: newUrl.query.firstname + "", lastname: newUrl.query.lastname + "", time: newUrl.query.time + ""};
+        let playerFormularData: PlayerData = {firstname: newUrl.query.firstname + "", lastname: newUrl.query.lastname + "", time: parseFloat(newUrl.query.time + "")};
 
         //let formularData: Mongo.FilterQuery<any> = {"lastname":"number": newUrl.query.number.toString();
         
@@ -86,6 +86,14 @@ async function handleUserRequest(_userRequest: Http.IncomingMessage, _serverResp
             console.log("sendPlayerData wird ausgeführt");
             let enteredData: string = await sendPlayerData (urlDatabank, playerFormularData);
             _serverResponse.write(enteredData);
+        }
+
+        //Abfrage, ob showPlayerData abgerufen wird
+        if (newUrl.pathname == "/showPlayerData") {
+
+            console.log("showPlayerData wird ausgeführt");
+            let serverResponseArray: PlayerData[] = await readPlayerData(urlDatabank);
+            _serverResponse.write(JSON.stringify(serverResponseArray));
         }
     }
     _serverResponse.end();
@@ -160,5 +168,18 @@ async function sendPlayerData(_requestedUrl:string, _PlayerData: Mongo.FilterQue
 
     let databaseResponseString: string = "Die Daten wurden erfolgreich gespeichert!";
     return databaseResponseString;
+}
+
+//Funktion, um die Spieler-Daten für die Highscores auszulesen
+async function readPlayerData(_requestedUrl: string): Promise <PlayerData[]> {
+    
+    let mongoDetails: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+    let mongoClientDetails: Mongo.MongoClient = new Mongo.MongoClient(_requestedUrl, mongoDetails);
+    await mongoClientDetails.connect();
+    
+    let collectionDetails: Mongo.Collection = mongoClientDetails.db("Memory_Game").collection("playerData");
+    let databaseCursor: Mongo.Cursor = collectionDetails.find();
+    let databaseSerachResult: PlayerData[] = await databaseCursor.toArray();
+    return databaseSerachResult;
 }
 }

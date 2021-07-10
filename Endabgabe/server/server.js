@@ -30,7 +30,7 @@ var Endabgabe;
         if (_userRequest.url != undefined) {
             newUrl = Url.parse(_userRequest.url, true);
             let pictureFormularData = { pictureOrigin: newUrl.query.pictureOrigin + "" };
-            let playerFormularData = { firstname: newUrl.query.firstname + "", lastname: newUrl.query.lastname + "", time: newUrl.query.time + "" };
+            let playerFormularData = { firstname: newUrl.query.firstname + "", lastname: newUrl.query.lastname + "", time: parseFloat(newUrl.query.time + "") };
             //let formularData: Mongo.FilterQuery<any> = {"lastname":"number": newUrl.query.number.toString();
             //Abfrage, ob sendEnteredData abgerufen wird
             if (newUrl.pathname == "/sendEnteredData") {
@@ -61,6 +61,12 @@ var Endabgabe;
                 console.log("sendPlayerData wird ausgeführt");
                 let enteredData = await sendPlayerData(urlDatabank, playerFormularData);
                 _serverResponse.write(enteredData);
+            }
+            //Abfrage, ob showPlayerData abgerufen wird
+            if (newUrl.pathname == "/showPlayerData") {
+                console.log("showPlayerData wird ausgeführt");
+                let serverResponseArray = await readPlayerData(urlDatabank);
+                _serverResponse.write(JSON.stringify(serverResponseArray));
             }
         }
         _serverResponse.end();
@@ -114,6 +120,16 @@ var Endabgabe;
         collectionDetails.insertOne(_PlayerData);
         let databaseResponseString = "Die Daten wurden erfolgreich gespeichert!";
         return databaseResponseString;
+    }
+    //Funktion, um die Spieler-Daten für die Highscores auszulesen
+    async function readPlayerData(_requestedUrl) {
+        let mongoDetails = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClientDetails = new Mongo.MongoClient(_requestedUrl, mongoDetails);
+        await mongoClientDetails.connect();
+        let collectionDetails = mongoClientDetails.db("Memory_Game").collection("playerData");
+        let databaseCursor = collectionDetails.find();
+        let databaseSerachResult = await databaseCursor.toArray();
+        return databaseSerachResult;
     }
 })(Endabgabe = exports.Endabgabe || (exports.Endabgabe = {}));
 //# sourceMappingURL=server.js.map

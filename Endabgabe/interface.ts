@@ -7,5 +7,5 @@ interface pictureFormularData {
 interface PlayerData {
     firstname: string;
     lastname: string;
-    time: string;
+    time: number;
 }

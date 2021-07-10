@@ -10,29 +10,20 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Darker+Grotesque"/>
     <!--Ende Fremd-Code-->
-    <script src="../client/client.js" defer></script>
-    <title>Score</title>
+    <script src="../client/score.js" defer></script>
+    <title id="score-html">Score</title>
 </head>
 
 <body id="html-score">
     <a href="index.html"><img id="home-button" src="../media/house.svg"
         alt="Home-Button"></a>
     <h1>Du hast es geschafft!</h1>
-    <h2>Deine Zeit ist:</h2>
+    <h2>Deine Zeit ist:</h2><h2 id="displayPlayerTime"></h2>
     <p>Das war super, aber geht sicherlich noch besser. Versuche es doch noch einmal!</p>
     <a href="game.html"><button>Erneut spielen</button></a>
 
     <h2>Rangliste:</h2>
-    <h3>1. Max Mustermann 00min 00sek</h3>
-    <h3>2. Max Mustermann 00min 00sek</h3>
-    <h3>3. Max Mustermann 00min 00sek</h3>
-    <h3>4. Max Mustermann 00min 00sek</h3>
-    <h3>5. Max Mustermann 00min 00sek</h3>
-    <h3>6. Max Mustermann 00min 00sek</h3>
-    <h3>7. Max Mustermann 00min 00sek</h3>
-    <h3>8. Max Mustermann 00min 00sek</h3>
-    <h3>9. Max Mustermann 00min 00sek</h3>
-    <h3>10. Max Mustermann 00min 00sek</h3>
+    <div id="highscoreOutput"></div>
 </body>
 
 </html>

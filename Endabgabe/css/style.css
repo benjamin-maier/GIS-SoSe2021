@@ -112,6 +112,12 @@ a{
 .hideImage{
     display: none;
 }
+.setOpacityDown{
+    opacity: 0%;
+}
+.setOpacityUp{
+    opacity: 100%;
+}
 /*Tablet*/@media screen and (max-width: 1024px) {
 h1{
     font-size: 4.5em;
