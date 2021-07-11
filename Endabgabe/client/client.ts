@@ -3,8 +3,8 @@ namespace Endabgabe {
     //Url für die Server-Verbindung
     let url: RequestInfo;
     function setUrl(): void {
-        //url = "https://gissose-2021.herokuapp.com";
-        url = "http://localhost:8100";
+        url = "https://gissose-2021.herokuapp.com";
+        //url = "http://localhost:8100";
     }
 
     localStorage.clear();

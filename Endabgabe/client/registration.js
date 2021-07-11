@@ -4,8 +4,8 @@ var Endabgabe;
     //Url für die Server-Verbindung
     let url;
     function setUrl() {
-        //url = "https://gissose-2021.herokuapp.com";
-        url = "http://localhost:8100";
+        url = "https://gissose-2021.herokuapp.com";
+        //url = "http://localhost:8100";
     }
     document.getElementById("skipToScoreButton").addEventListener("click", skipToScore);
     document.getElementById("safePlayerButton").addEventListener("click", sendPlayerData);
